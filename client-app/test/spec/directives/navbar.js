@@ -1,0 +1,21 @@
+'use strict';
+
+describe('Directive: navbar', function () {
+
+  // load the directive's module
+  beforeEach(module('privateTheaterApp'));
+
+  var element,
+    scope;
+
+  beforeEach(inject(function ($rootScope) {
+    scope = $rootScope.$new();
+  }));
+
+  it('should make hidden element visible', inject(function ($compile) {
+    element = angular.element('<navbar></navbar>');
+    element = $compile(element)(scope);
+    //TODO: navbar test
+    expect(true).toBe(true);
+  }));
+});
