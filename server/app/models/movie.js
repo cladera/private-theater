@@ -5,6 +5,7 @@ var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
 var MovieSchema = new Schema({
+  id: String,
   name:String,
   year: Number,
   imageUrl: String,

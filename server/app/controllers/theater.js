@@ -29,9 +29,9 @@ exports.movie = function(req, res){
     imdbUrl: '',
     filmaffinityUrl: '',
     urls: {
-      fullHD: 'http://wwww.google.com',
-      HD: '',
-      SD: ''
+      fullHD: 'https://s3.amazonaws.com/theater-club-movies/brave.mp4',
+      HD: 'https://s3.amazonaws.com/theater-club-movies/brave.mp4',
+      SD: 'https://s3.amazonaws.com/theater-club-movies/brave.mp4'
     }
   });
 }
