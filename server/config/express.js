@@ -1,6 +1,6 @@
 var express = require('express');
 
-module.exports = function(app, config) {
+module.exports = function(app, config, passport) {
   app.configure(function () {
     app.enable('strict routing');
     app.use(express.compress());
@@ -12,6 +12,8 @@ module.exports = function(app, config) {
     app.use(express.logger('dev'));
     app.use(express.bodyParser());
     app.use(express.methodOverride());
+    app.use(passport.initialize());
+    app.use(passport.session());
     app.use(app.router);
     //Enable Theater APP statics
     app.use('/theater/', express.static(config.theaterApp + '/dist'));

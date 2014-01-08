@@ -3,7 +3,7 @@
 angular.module('privateTheaterAdminAppApp')
   .directive('hForm', function () {
     return {
-      templateUrl: 'views/directives/form/h-form.html',
+      templateUrl: 'views/h-form.html',
       restrict: 'E',
       transclude: true,
       scope: {
@@ -21,7 +21,7 @@ angular.module('privateTheaterAdminAppApp')
   .directive('hFormInput', function(){
     return {
       require: '^hForm',
-      templateUrl: 'views/directives/form/h-form-input.html',
+      templateUrl: 'views/h-form-input.html',
       restrict: 'E',
       transclude: true,
       scope: {

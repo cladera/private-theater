@@ -17,6 +17,8 @@
     "grunt-contrib-compass": "~0.6.0",
     "request": "~2.27.0",
     "time-grunt": "~0.1.1",
-    "load-grunt-tasks": "~0.2.0"
+    "load-grunt-tasks": "~0.2.0",
+    "passport": "~0.1.18",
+    "passport-local": "~0.1.6"
   }
 }
