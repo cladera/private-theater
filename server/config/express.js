@@ -15,6 +15,8 @@ module.exports = function(app, config) {
     app.use(app.router);
     //Enable Theater APP statics
     app.use('/theater/', express.static(config.theaterApp + '/dist'));
+    //Enable Admin APP statics
+    app.use('/admin/', express.static(config.adminApp + '/dist'));
     app.use(function(req, res) {
       res.status(404).sendfile(config.root+'/public/404.html');
     });

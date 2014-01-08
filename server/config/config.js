@@ -6,7 +6,7 @@ var config = {
   development: {
     root: rootPath,
     theaterApp: path.normalize(__dirname + '/../../theater-app'),
-    adminApp: path.normalize(__dirname + '/../../theater-app'),
+    adminApp: path.normalize(__dirname + '/../../admin-app'),
     app: {
       name: 'theater-server'
     },
@@ -17,7 +17,7 @@ var config = {
   test: {
     root: rootPath,
     theaterApp: path.normalize(__dirname + '/../../theater-app'),
-    adminApp: path.normalize(__dirname + '/../../theater-app'),
+    adminApp: path.normalize(__dirname + '/../../admin-app'),
     app: {
       name: 'theater-server'
     },
@@ -28,7 +28,7 @@ var config = {
   production: {
     root: rootPath,
     theaterApp: path.normalize(__dirname + '/../../theater-app'),
-    adminApp: path.normalize(__dirname + '/../../theater-app'),
+    adminApp: path.normalize(__dirname + '/../../admin-app'),
     app: {
       name: 'theater-server'
     },
