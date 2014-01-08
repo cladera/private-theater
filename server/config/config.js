@@ -5,8 +5,10 @@ var path = require('path'),
 var config = {
   development: {
     root: rootPath,
+    theaterApp: path.normalize(__dirname + '/../../theater-app'),
+    adminApp: path.normalize(__dirname + '/../../theater-app'),
     app: {
-      name: 'backend'
+      name: 'theater-server'
     },
     port: 3000,
     db: 'mongodb://localhost/backend-development'
@@ -14,19 +16,23 @@ var config = {
 
   test: {
     root: rootPath,
+    theaterApp: path.normalize(__dirname + '/../../theater-app'),
+    adminApp: path.normalize(__dirname + '/../../theater-app'),
     app: {
-      name: 'backend'
+      name: 'theater-server'
     },
-    port: 3000,
+    port: 9000,
     db: 'mongodb://localhost/backend-test'
   },
 
   production: {
     root: rootPath,
+    theaterApp: path.normalize(__dirname + '/../../theater-app'),
+    adminApp: path.normalize(__dirname + '/../../theater-app'),
     app: {
-      name: 'backend'
+      name: 'theater-server'
     },
-    port: 3000,
+    port: 80,
     db: 'mongodb://localhost/backend-production'
   }
 };
