@@ -1,9 +1,9 @@
 /**
  * Created by cgcladera on 07/01/14.
  */
-
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
+
 var MovieSchema = new Schema({
   name:String,
   year: Number,
