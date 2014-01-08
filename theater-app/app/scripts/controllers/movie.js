@@ -1,10 +1,8 @@
 'use strict';
 
 angular.module('privateTheaterApp')
-  .controller('MovieCtrl', ['$scope', '$http', '$routeParams', '$sce', function ($scope, $http, $roteParams, $sce) {
-    $http.get('data/'+$roteParams.movieId+'.json').success(function(data){
-      $scope.movie = data;
-      console.log(data);
-      $scope.url = $sce.trustAsResourceUrl(data.urls.fullHD);
+  .controller('MovieCtrl', ['$scope', '$http', '$routeParams', '$sce', 'Movie', function ($scope, $http, $roteParams, $sce, Movie) {
+    $scope.movie = Movie.get({movieId: $roteParams.movieId}, function(movie){
+      $scope.url = $sce.trustAsResourceUrl(movie.urls.fullHD);
     });
   }]);

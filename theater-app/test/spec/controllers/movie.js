@@ -1,7 +1,13 @@
 'use strict';
 
 describe('Controller: MovieCtrl', function () {
-
+  beforeEach(function(){
+    this.addMatchers({
+      toEqualData: function(expected) {
+        return angular.equals(this.actual, expected);
+      }
+    });
+  });
   // load the controller's module
   beforeEach(module('privateTheaterApp'));
 
@@ -14,7 +20,7 @@ describe('Controller: MovieCtrl', function () {
     $httpBackend = _$httpBackend_;
 
     $httpBackend.expectGET('data/xyz.json')
-      .respond({name: 'movie XYZ', urls: { fullHD: 'movie.mp4gru'}});
+      .respond({name: 'movie XYZ', urls: { fullHD: 'movie.mp4'}});
 
     $routeParams.movieId = 'xyz';
     scope = $rootScope.$new();
@@ -23,11 +29,12 @@ describe('Controller: MovieCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.movie).toBeUndefined();
+  it('should load Movie info', function () {
+    console.log(scope.movie);
+    expect(scope.movie).toEqualData({});
 
     $httpBackend.flush();
 
-    expect(scope.movie).toEqual({name: 'movie XYZ', urls: { fullHD: 'movie.mp4gru'}});
+    expect(scope.movie).toEqualData({name: 'movie XYZ', urls: { fullHD: 'movie.mp4'}});
   });
 });

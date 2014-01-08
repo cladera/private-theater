@@ -1,12 +1,12 @@
 'use strict';
 
 describe('Controller: MainCtrl', function () {
+  // load the controller's module
+  beforeEach(module('privateTheaterApp'));
+
   var MainCtrl,
     scope,
     httpBackend;
-
-  // load the controller's module
-  beforeEach(module('privateTheaterApp'));
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
@@ -24,9 +24,9 @@ describe('Controller: MainCtrl', function () {
   }));
 
   it('should load 1 movie', function () {
-    expect(scope.movies).toBeUndefined();
-    httpBackend.flush();
+    expect(scope.movies.length).toBe(0);
 
+    httpBackend.flush();
     expect(scope.movies.length).toBe(1);
   });
 });

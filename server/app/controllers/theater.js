@@ -5,7 +5,7 @@
 exports.movies = function(req, res){
   res.json([
     {
-      id: 1,
+      id: 'brave-2012',
       year: 2013,
       imageUrl: 'http://ia.media-imdb.com/images/M/MV5BMzgwODk3ODA1NF5BMl5BanBnXkFtZTcwNjU3NjQ0Nw@@._V1_SX640_SY720_.jpg',
       name: 'Brave',
