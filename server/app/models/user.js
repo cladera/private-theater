@@ -7,7 +7,8 @@ var mongoose = require('mongoose'),
 var UserSchema = new Schema({
   email: String,
   hash: String,
-  salt: String
+  salt: String,
+  role: String
 });
 
 UserSchema.statics.signup = function(email, password, done){
@@ -19,7 +20,8 @@ UserSchema.statics.signup = function(email, password, done){
     User.create({
       email : email,
       salt  : salt,
-      hash  : hash
+      hash  : hash,
+      role  : 'USER'
     }, function(err, user){
       if(err){
         throw err;

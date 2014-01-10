@@ -1,0 +1,21 @@
+<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+  <div class="navbar-header">
+    <a class="navbar-brand" href="./#/">Private Theater Dashboard</a>
+  </div>
+  <div class="collapse navbar-collapse">
+  </div>
+</nav>
+<legend>New user</legend>
+<h-form action="/users/new" method="post">
+  <h-form-input name="email" label="Email" type="email"></h-form-input>
+  <h-form-input name="password" label="Password" type="password"></h-form-input>
+  <h-form-select name="role" label="Role">
+    <option value="USER">User</option>
+    <option value="ADMIN">Admin</option>
+  </h-form-select>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Create</button>
+    </div>
+  </div>
+</h-form>

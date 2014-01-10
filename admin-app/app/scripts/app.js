@@ -16,6 +16,14 @@ angular.module('privateTheaterAdminAppApp', [
         templateUrl: 'views/new.html',
         controller: 'NewCtrl'
       })
+      .when('/users', {
+        templateUrl: 'views/users.html',
+        controller: 'UsersCtrl'
+      })
+      .when('/users/new', {
+        templateUrl: 'views/new_user.html',
+        controller: 'NewUserCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

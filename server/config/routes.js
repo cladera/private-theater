@@ -32,7 +32,8 @@ module.exports = function(app, passport){
   app.get('/theater/data/:movieId.json', theater.movie);
 
   /* Admin routes */
-  app.get('/admin', admin.movies);
+  //app.get('/admin', admin.movies);
+  //app.get('/admin/users', admin.users);
   app.post('/admin/movie', admin.post);
 
 };

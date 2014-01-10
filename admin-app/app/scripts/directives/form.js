@@ -30,7 +30,23 @@ angular.module('privateTheaterAdminAppApp')
         type: '@'
       },
       link: function(scope, element, attrs, hFormCtrl){
-        console.log(element+attrs);
+        attrs = attrs || [];
+        hFormCtrl.addHInput(scope);
+      }
+    };
+  })
+  .directive('hFormSelect', function(){
+    return {
+      require: '^hForm',
+      templateUrl: 'views/h-form-select.html',
+      restrict: 'E',
+      transclude: true,
+      scope: {
+        name: '@',
+        label: '@'
+      },
+      link: function(scope, element, attrs, hFormCtrl){
+        attrs = attrs || [];
         hFormCtrl.addHInput(scope);
       }
     };
