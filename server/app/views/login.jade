@@ -1,0 +1,13 @@
+extends layout
+block append links
+    link(rel='stylesheet', href='css/signin.css')
+
+block content
+    form(role='form', action='/login', method='post').form-signin
+            h2.form-signin-heading Please sign in
+            input(type='email', name='email', placeholder='Email address', required='true', autofocus='true').form-control
+            input(type='password', name='password', placeholder='Password', requried='true').form-control
+            button(type='submit').btn.btn-lg.btn-primary.btn-block Sign in
+            - if(error != '')
+                div.alert.alert-danger #{error}
+

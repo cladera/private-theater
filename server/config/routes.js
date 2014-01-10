@@ -7,11 +7,13 @@ module.exports = function(app, passport){
 
   /* Login */
   app.get('/', function(req, res){
-    res.sendfile(path.resolve('app/views/login.html'));
+    res.render('login',{
+      error: req.flash('error')
+    });
   });
   app.post('/login',
     passport.authenticate('local', { successRedirect: '/theater/',
-      failureRedirect: '/error',
+      failureRedirect: '/',
       failureFlash: true })
   );
 
