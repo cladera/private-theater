@@ -7,7 +7,7 @@ module.exports = function(app, passport){
 
   /* Login */
   app.get('/', function(req, res){
-    res.sendfile(path.resolve('public/login.html'));
+    res.sendfile(path.resolve('app/views/login.html'));
   });
   app.post('/login',
     passport.authenticate('local', { successRedirect: '/theater/',
@@ -18,7 +18,14 @@ module.exports = function(app, passport){
   /* Theater routes */
   app.get('/theater', function(req, res){
     res.redirect('/theater/');
-  })
+  });
+  app.get('/theater/', function(req, res, next){
+    if(req.isAuthenticated()){
+      next();
+    }else {
+      res.redirect('/');
+    }
+  });
   app.get('/theater/data/movies.json', theater.movies);
   app.get('/theater/data/:movieId.json', theater.movie);
 
