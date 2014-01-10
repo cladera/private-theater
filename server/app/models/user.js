@@ -11,7 +11,11 @@ var UserSchema = new Schema({
   role: String
 });
 
-UserSchema.statics.signup = function(email, password, done){
+UserSchema.statics.signUp = function(email, password, role, done){
+  if(done === undefined){
+    done = role;
+    role = 'USER';
+  }
   var User = this;
   hash(password, function(err, salt,hash){
     if(err){
@@ -21,7 +25,7 @@ UserSchema.statics.signup = function(email, password, done){
       email : email,
       salt  : salt,
       hash  : hash,
-      role  : 'USER'
+      role  : role
     }, function(err, user){
       if(err){
         throw err;

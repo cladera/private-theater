@@ -12,10 +12,16 @@ module.exports = function(app, passport){
     });
   });
   app.post('/login',
-    passport.authenticate('local', { successRedirect: '/theater/',
+    passport.authenticate('local', { successRedirect: '/login',
       failureRedirect: '/',
       failureFlash: true })
   );
+
+  app.get('/login', function(req, res){
+    var redirect_to = req.session.redirect_to || '/theater/';
+    delete req.session.redirect_to;
+    res.redirect(redirect_to);
+  });
 
   /* Theater routes */
   app.get('/theater', function(req, res){
@@ -32,8 +38,26 @@ module.exports = function(app, passport){
   app.get('/theater/data/:movieId.json', theater.movie);
 
   /* Admin routes */
-  //app.get('/admin', admin.movies);
+  app.get('/admin', function(req, res, next){
+    res.redirect('/admin/');
+  });
+  app.get('/admin/', function(req, res, next){
+    console.log(req.user);
+    if(req.isAuthenticated()){
+      console.log(req.user);
+      if(req.user.role === 'ADMIN'){
+        next();
+      }else {
+        res.send(401);
+      }
+    }else {
+      req.session.redirect_to = '/admin/';
+      res.redirect('/');
+    }
+
+
+  });
   //app.get('/admin/users', admin.users);
-  app.post('/admin/movie', admin.post);
+  //app.post('/admin/movie', admin.post);
 
 };
