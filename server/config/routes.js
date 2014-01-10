@@ -3,7 +3,8 @@ module.exports = function(app, passport){
 
   var theater = require('../app/controllers/theater')
     , admin   = require('../app/controllers/admin')
-    , path = require('path');
+    , path = require('path')
+    , Auth = require('./middlewares/authorization');
 
   /* Login */
   app.get('/', function(req, res){
@@ -27,36 +28,15 @@ module.exports = function(app, passport){
   app.get('/theater', function(req, res){
     res.redirect('/theater/');
   });
-  app.get('/theater/', function(req, res, next){
-    if(req.isAuthenticated()){
-      next();
-    }else {
-      res.redirect('/');
-    }
-  });
-  app.get('/theater/data/movies.json', theater.movies);
-  app.get('/theater/data/:movieId.json', theater.movie);
+  app.get('/theater/', Auth.isAuthenticatedUser);
+  app.get('/theater/data/movies.json', Auth.isAuthenticatedUser, theater.movies);
+  app.get('/theater/data/:movieId.json', Auth.isAuthenticatedUser, theater.movie);
 
   /* Admin routes */
-  app.get('/admin', function(req, res, next){
+  app.get('/admin', function(req, res){
     res.redirect('/admin/');
   });
-  app.get('/admin/', function(req, res, next){
-    console.log(req.user);
-    if(req.isAuthenticated()){
-      console.log(req.user);
-      if(req.user.role === 'ADMIN'){
-        next();
-      }else {
-        res.send(401);
-      }
-    }else {
-      req.session.redirect_to = '/admin/';
-      res.redirect('/');
-    }
-
-
-  });
+  app.get('/admin/', Auth.isAuthenticatedAdmin);
   //app.get('/admin/users', admin.users);
   //app.post('/admin/movie', admin.post);
 
