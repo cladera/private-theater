@@ -22,3 +22,14 @@ exports.isAuthenticatedAdmin = function(req, res, next){
     res.redirect('/');
   }
 };
+exports.userExist = function(req, res, next) {
+  User.count({
+    email: req.body.email
+  }, function (err, count) {
+    if (count === 0) {
+      next();
+    } else {
+      res.send(400);
+    }
+  });
+};

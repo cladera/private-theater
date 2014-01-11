@@ -17,12 +17,12 @@ module.exports = function(app, passport){
       failureRedirect: '/',
       failureFlash: true })
   );
-
   app.get('/login', function(req, res){
     var redirect_to = req.session.redirect_to || '/theater/';
     delete req.session.redirect_to;
     res.redirect(redirect_to);
   });
+  //TODO: Logout route
 
   /* Theater routes */
   app.get('/theater', function(req, res){
@@ -37,6 +37,8 @@ module.exports = function(app, passport){
     res.redirect('/admin/');
   });
   app.get('/admin/', Auth.isAuthenticatedAdmin);
+  app.post('/admin/users/new', Auth.isAuthenticatedAdmin, admin.postUser);
+  app.post('/admin/movies/new', Auth.isAuthenticatedAdmin, admin.postMovie);
   //app.get('/admin/users', admin.users);
   //app.post('/admin/movie', admin.post);
 
