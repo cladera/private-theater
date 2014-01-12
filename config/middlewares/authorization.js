@@ -7,19 +7,21 @@ exports.isAuthenticatedUser = function (req, res, next){
   if(req.isAuthenticated()){
     next();
   }else{
-    res.redirect("/");
+    res.redirect('/login');
   }
 };
 exports.isAuthenticatedAdmin = function(req, res, next){
+  console.log('Admin connection attempt');
   if(req.isAuthenticated()){
+    console.log('User authenticated');
     if(req.user.role === 'ADMIN'){
+      console.log('Identified as Admin user');
       next();
     }else {
       res.send(401);
     }
   }else {
-    req.session.redirect_to = '/admin/';
-    res.redirect('/');
+    res.redirect('/login');
   }
 };
 exports.userExist = function(req, res, next) {

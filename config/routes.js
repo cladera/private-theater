@@ -7,21 +7,19 @@ module.exports = function(app, passport){
     , Auth = require('./middlewares/authorization');
 
   /* Login */
-  app.get('/', function(req, res){
+  app.get('/',Auth.isAuthenticatedUser, function(req, res){
+    res.redirect('/theater/');
+  });
+  app.get('/login', function(req, res){
     res.render('login',{
       error: req.flash('error')
     });
   });
   app.post('/login',
-    passport.authenticate('local', { successRedirect: '/login',
+    passport.authenticate('local', { successRedirect: '/theater/',
       failureRedirect: '/',
       failureFlash: true })
   );
-  app.get('/login', function(req, res){
-    var redirect_to = req.session.redirect_to || '/theater/';
-    delete req.session.redirect_to;
-    res.redirect(redirect_to);
-  });
   //TODO: Logout route
 
   /* Theater routes */

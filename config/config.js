@@ -21,7 +21,7 @@ var config = {
   development: {
     root: rootPath,
     theaterApp: path.normalize(__dirname + '/../theater-app'),
-    adminApp: path.normalize(__dirname + '../admin-app'),
+    adminApp: path.normalize(__dirname + '/../admin-app'),
     app: {
       name: 'theater-server'
     },
