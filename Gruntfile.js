@@ -34,6 +34,23 @@ module.exports = function (grunt) {
         files: ['app/views/**/*.jade'],
         options: { livereload: reloadPort }
       }
+    },
+    copy: {
+      dist: {
+        files: [
+          //Server files
+          {expand: true, src: 'app/**', dest: 'dist/'},
+          {expand: true, src: 'config/**', dest: 'dist/'},
+          {expand: true, src: 'public/**', dest: 'dist/'},
+          {expand: true, src: 'node_modules/**', dest: 'dist/'},
+          {expand: true, src: './*', dest: 'dist/', filter: 'isFile'},
+
+          //Frontend apps
+          {expand: true, src: ['theater-app/dist/**'], dest: 'dist/'},
+          {expand: true, src: ['admin-app/dist/**'], dest: 'dist/'}
+
+        ]
+      }
     }
   });
 
@@ -56,4 +73,5 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('default', ['develop', 'watch']);
+  grunt.registerTask('dist', ['copy:dist']);
 };

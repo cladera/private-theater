@@ -1,7 +1,22 @@
 var path = require('path'),
     rootPath = path.normalize(__dirname + '/..'),
-    env = process.env.NODE_ENV || 'development';
+    env = process.env.NODE_ENV || 'development',
+    mongoUrl = require('./mongo');
 
+if(process.env.VCAP_SERVICES){
+  var services = JSON.parse(process.env.VCAP_SERVICES);
+  console.log(services);
+  var mongo = services['mongodb2-2.4.8'][0]['credentials'];
+}else {
+  var mongo = {
+    "hostname":"localhost",
+    "port":27017,
+    "username":"",
+    "password":"",
+    "name":"",
+    "db":"production"
+  };
+}
 var config = {
   development: {
     root: rootPath,
@@ -33,7 +48,7 @@ var config = {
       name: 'theater-server'
     },
     port: 80,
-    db: 'mongodb://localhost/backend-production'
+    db: mongoUrl(mongo)
   }
 };
 
