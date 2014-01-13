@@ -5,6 +5,12 @@
 var mongoose = require('mongoose'),
   Schema = mongoose.Schema;
 
+var CaptionSchema = new Schema({
+  lang: String,
+  label: String,
+  url: String
+});
+
 var MovieSchema = new Schema({
   id: String,
   name:String,
@@ -14,7 +20,8 @@ var MovieSchema = new Schema({
   imdbUrl: String,
   filmaffinityUrl: String,
   HD: String,
-  SD: String
+  SD: String,
+  captions: [CaptionSchema]
 });
 
 MovieSchema.virtual('date')

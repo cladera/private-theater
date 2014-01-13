@@ -18,7 +18,6 @@ exports.movies = function(req, res){
 };
 
 exports.postMovie = function(req, res){
-  console.log('New ');
   var data = {
     id: req.body.id.toLowerCase(),
     name: req.body.name,
@@ -31,6 +30,21 @@ exports.postMovie = function(req, res){
     SD: req.body.SD
   };
   var movie = new Movie(data);
+  if(req.body.ENCC){
+    movie.captions.push({
+      lang: 'en',
+      label: 'English',
+      url: req.body.ENCC
+    });
+  }
+  if(req.body.ESCC){
+    movie.captions.push({
+      lang: 'es',
+      label: 'Spanish',
+      url: req.body.ESCC
+    });
+  }
+
   movie.save(function(err, m){
     if(err){
       res.send(500);
