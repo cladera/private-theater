@@ -1,5 +1,5 @@
 <navbar></navbar>
 <h1>{{ movie.name }}</h1>
-<video controls
-       preload="auto" width="768" ng-src="{{url}}">
+<video videojs src="{{url}}" class="video-js vjs-default-skin vjs-controls-enabled vjs-has-started vjs-paused vjs-user-inactive" ng-model="video">
+  <!--track kind="captions" src="{{captions}}" srclang="en" label="English"-->
 </video>

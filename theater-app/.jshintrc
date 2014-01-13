@@ -20,6 +20,8 @@
   "smarttabs": true,
   "globals": {
     "angular": false,
-    "Movie": true
+    "Movie": true,
+    "vjs": true,
+    "videojs":true
   }
 }
