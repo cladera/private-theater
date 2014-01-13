@@ -18,11 +18,24 @@ exports.movies = function(req, res){
 };
 
 exports.postMovie = function(req, res){
-  var movie = new Movie(req.body);
-  movie.save(function(err){
+  console.log('New ');
+  var data = {
+    id: req.body.id.toLowerCase(),
+    name: req.body.name,
+    year: req.body.year,
+    imageUrl: req.body.imageUrl,
+    genders: req.body.genders.split(','),
+    imdbUrl: req.body.imdbUrl,
+    filmaffinityUrl: req.body.filmaffinityUrl,
+    HD: req.body.HD,
+    SD: req.body.SD
+  };
+  var movie = new Movie(data);
+  movie.save(function(err, m){
     if(err){
       res.send(500);
     }else {
+      console.log('Movie created successfully', m);
       res.redirect('/admin/');
     }
   });
@@ -42,8 +55,9 @@ exports.postUser = function(req, res){
         User.signUp(email, password, role, function(err){
           if(err){
             res.send(500);
+          }else {
+            res.redirect('/admin/');
           }
-          res.redirect('/admin/');
         });
       } else {
         res.send(409);
@@ -51,4 +65,13 @@ exports.postUser = function(req, res){
     });
   }
 
+};
+exports.removeMovie = function(req, res){
+  Movie.remove({ name: req.query.name}, function (err){
+    if(err){
+      res.send(500);
+    }else {
+      res.redirect('/admin/#/new');
+    }
+  });
 };

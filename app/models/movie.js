@@ -1,3 +1,4 @@
+
 /**
  * Created by cgcladera on 07/01/14.
  */
@@ -12,11 +13,8 @@ var MovieSchema = new Schema({
   genders: Array,
   imdbUrl: String,
   filmaffinityUrl: String,
-  urls: [new Schema({
-    fullHD: String,
-    HD: String,
-    SD: String
-  }, {_id : false})]
+  HD: String,
+  SD: String
 });
 
 MovieSchema.virtual('date')
