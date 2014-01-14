@@ -94,3 +94,8 @@ ul.movies > li > a {
 img.movie {
     height: 200px;
 }
+
+/* VideoJS skin customizations */
+div.video-js {
+  margin: 0 auto;
+}
