@@ -16,6 +16,10 @@ angular.module('privateTheaterApp', [
         templateUrl: 'views/movie.html',
         controller: 'MovieCtrl'
       })
+      .when('/profile', {
+        templateUrl: 'views/profile.html',
+        controller: 'ProfileCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });

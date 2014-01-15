@@ -3,8 +3,9 @@ module.exports = function(app, passport){
 
   var theater = require('../app/controllers/theater')
     , admin   = require('../app/controllers/admin')
-    , path = require('path')
-    , Auth = require('./middlewares/authorization');
+    , user    = require('../app/controllers/user')
+    , path    = require('path')
+    , Auth    = require('./middlewares/authorization');
 
   /* Login */
   app.get('/',Auth.isAuthenticatedUser, function(req, res){
@@ -20,7 +21,13 @@ module.exports = function(app, passport){
       failureRedirect: '/',
       failureFlash: true })
   );
-  //TODO: Logout route
+  app.get('/logout', function(req, res){
+   req.logout();
+   res.redirect('/');
+  });
+
+  /* User session routes */
+  app.get('/user/session.json', Auth.isAuthenticatedUser, user.session);
 
   /* Theater routes */
   app.get('/theater', function(req, res){

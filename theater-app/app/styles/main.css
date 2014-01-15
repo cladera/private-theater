@@ -83,6 +83,7 @@ ul.movies {
   padding: 0px;
 }
 ul.movies > li{
+  width: 140px;
   list-style: none;
   display: inline-block;
   margin-right: 10px;
@@ -90,9 +91,18 @@ ul.movies > li{
 ul.movies > li > a {
   display: block;
 }
-
+ul.movies div.description {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+ul.movies div.description a.title {
+  font-size: 0.8em;
+}
 img.movie {
-    height: 200px;
+  width: 138px;
+  height: 200px;
 }
 
 /* VideoJS skin customizations */

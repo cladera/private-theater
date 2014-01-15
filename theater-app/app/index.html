@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title></title>
+    <title>Private Theater</title>
     <meta name="descripti on" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -24,7 +24,7 @@
   </head>
   <body ng-app="privateTheaterApp">
     <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
     <!-- Add your site or application content here -->
     <div class="container" ng-view=""></div>
@@ -36,7 +36,7 @@
        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-       ga('create', 'UA-XXXXX-X');
+       ga('create', 'UA-47135288-1', 'af.cm');
        ga('send', 'pageview');
     </script>
 
@@ -66,6 +66,9 @@
     <script src="scripts/directives/navbar.js"></script>
     <script src="scripts/services/Movie.js"></script>
     <script src="scripts/directives/videojs.js"></script>
+    <script src="scripts/controllers/user.js"></script>
+    <script src="scripts/services/user.js"></script>
+    <script src="scripts/controllers/profile.js"></script>
     <!-- endbuild -->
 </body>
 </html>
