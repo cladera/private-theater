@@ -13,7 +13,7 @@
         <a style="cursor: pointer;" class="dropdown-toggle" data-toggle="dropdown">{{user.email}} <b class="caret"></b></a>
         <ul class="dropdown-menu">
           <li><a href="/#/profile">Profile</a></li>
-          <li ng-if="{{user.role === 'ADMIN'}}"><a href="/admin/#/">Profile</a></li>
+          <li ng-if="user.role === 'ADMIN'"><a href="/admin/#/">Admin dashboard</a></li>
           <li class="divider"></li>
           <li><a href="/logout">Log out</a></li>
         </ul>
