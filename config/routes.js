@@ -33,6 +33,9 @@ module.exports = function(app, passport){
   app.get('/theater', function(req, res){
     res.redirect('/theater/');
   });
+  app.get('/theater/index.html', function(req,res){
+    res.redirect('/theater/');
+  });
   app.get('/theater/', Auth.isAuthenticatedUser);
   app.get('/theater/data/movies.json', Auth.isAuthenticatedUser, theater.movies);
   app.get('/theater/data/:movieId.json', Auth.isAuthenticatedUser, theater.movie);
