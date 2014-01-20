@@ -30,6 +30,11 @@ angular.module('privateTheaterApp', [
         access: access.anon
 
       })
+      .when('/admin/movies/new', {
+        templateUrl: 'views/newmovie.html',
+        controller: 'NewmovieCtrl',
+        access: access.admin
+      })
       .otherwise({
         redirectTo: '/404'
       });
