@@ -1,0 +1,9 @@
+<form role="form" ng-submit="login()" class="form-signin" name="loginForm">
+  <h2 class="form-signin-heading">Please sign in</h2>
+  <input type="email" data-ng-model="email" name="email" placeholder="Email address" required="true" autofocus="true" class="form-control">
+  <input type="password" data-ng-model="password" name="password" placeholder="Password" requried="true" class="form-control">
+  <label class="checkbox">
+    <input type="checkbox" value="remember-me" data-ng-model="rememberme"> Remember me
+  </label>
+  <button type="submit" class="btn btn-lg btn-primary btn-block" data-ng-disabled="loginForm.$invalid">Sign in</button>
+</form>

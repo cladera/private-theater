@@ -18,9 +18,9 @@ module.exports = function(app, config, passport) {
     app.use(express.methodOverride());
     app.use(flash());
     app.use(app.router);
-    app.use(express.static(config.root + '/public'));
-    app.use('/theater/', express.static(config.theaterApp + '/dist'));
-    app.use('/admin/', express.static(config.adminApp + '/dist'));
+    //app.use(express.static(config.root + '/public'));
+    app.use(express.static(config.theaterApp + '/dist'));
+    //app.use('/admin/', express.static(config.adminApp + '/dist'));
     app.use(function(req, res) {
       res.status(404).sendfile(config.root+'/public/404.html');
     });

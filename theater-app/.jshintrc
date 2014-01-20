@@ -22,6 +22,11 @@
     "angular": false,
     "Movie": true,
     "vjs": true,
-    "videojs":true
-  }
+    "videojs":true,
+    "routingConfig":true
+  },
+  "ignore": [
+    "app/scripts/routingConfig.js"
+  ]
+
 }
