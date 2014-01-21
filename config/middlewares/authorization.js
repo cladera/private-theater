@@ -9,11 +9,8 @@ exports.isAuthenticatedUser = function (req, res, next){
   }
 };
 exports.isAuthenticatedAdmin = function(req, res, next){
-  console.log('Admin connection attempt');
   if(req.isAuthenticated()){
-    console.log('User authenticated');
     if(req.user.role === 'ADMIN'){
-      console.log('Identified as Admin user');
       next();
     }else {
       res.send(401);

@@ -7,8 +7,12 @@ var passport = require('passport');
 module.exports.login = function(req, res, next) {
   passport.authenticate('local', function(err, user) {
 
-    if(err)     { return next(err); }
-    if(!user)   { return res.send(400); }
+    if(err){
+      return next(err);
+    }
+    if(!user)   {
+      return res.send(401);
+    }
 
 
     req.logIn(user, function(err) {
@@ -16,7 +20,9 @@ module.exports.login = function(req, res, next) {
         return next(err);
       }
 
-      if(req.body.rememberme) req.session.cookie.maxAge = 1000 * 60 * 60 * 24 * 7;
+      if(req.body.rememberme) {
+        req.session.cookie.maxAge = 1000 * 60 * 60 * 24 * 7;
+      }
       res.json(200,{
         _id: user._id,
         email: user.email,

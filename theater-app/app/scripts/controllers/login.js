@@ -2,6 +2,7 @@
 
 angular.module('privateTheaterApp')
   .controller('LoginCtrl', ['$rootScope', '$scope', 'Auth', '$location', function ($rootScope, $scope, Auth, $location) {
+    $scope.error = null;
     $scope.rememberme = true;
     $scope.login = function(){
       Auth.login({
@@ -11,7 +12,7 @@ angular.module('privateTheaterApp')
       }, function(){
         $location.path('/');
       }, function (){
-        $rootScope.error = 'Failed to login';
+        $scope.error = 'Failed to login';
       });
     };
   }]);
