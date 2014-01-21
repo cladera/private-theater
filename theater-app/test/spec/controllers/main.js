@@ -11,11 +11,10 @@ describe('Controller: MainCtrl', function () {
   // Initialize the controller and a mock scope
   beforeEach(inject(function (_$httpBackend_, $controller, $rootScope) {
     httpBackend = _$httpBackend_;
-    httpBackend.expectGET('data/movies.json')
+    httpBackend.expectGET('movies/query')
       .respond([{
         id: 0,
-        name: 'Brave',
-        thumbnails: []
+        name: 'Brave'
       }]);
     scope = $rootScope.$new();
     MainCtrl = $controller('MainCtrl', {

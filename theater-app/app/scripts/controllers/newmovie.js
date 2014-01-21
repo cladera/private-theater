@@ -9,7 +9,7 @@ angular.module('privateTheaterApp')
         if(m){
           $location.path('/movies/' + m.id);
         }
-      }, function(response){
+      }, function(){
         $scope.error = 'Impossible to save movie';
       });
     };

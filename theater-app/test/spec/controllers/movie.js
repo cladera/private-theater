@@ -19,7 +19,7 @@ describe('Controller: MovieCtrl', function () {
   beforeEach(inject(function (_$httpBackend_, $controller, $rootScope, $routeParams) {
     $httpBackend = _$httpBackend_;
 
-    $httpBackend.expectGET('data/xyz.json')
+    $httpBackend.expectGET('movies/xyz')
       .respond({name: 'movie XYZ', urls: { fullHD: 'movie.mp4'}});
 
     $routeParams.movieId = 'xyz';
