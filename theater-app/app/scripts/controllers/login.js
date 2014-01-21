@@ -2,7 +2,6 @@
 
 angular.module('privateTheaterApp')
   .controller('LoginCtrl', ['$rootScope', '$scope', 'Auth', '$location', function ($rootScope, $scope, Auth, $location) {
-
     $scope.rememberme = true;
     $scope.login = function(){
       Auth.login({
