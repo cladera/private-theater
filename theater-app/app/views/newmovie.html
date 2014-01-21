@@ -6,23 +6,23 @@
   </div>
 </nav>
 <legend>Post new movie</legend>
-<h-form action="/admin/movies/new" method="post">
-  <h-form-input name="id" label="ID" type="text"></h-form-input>
-  <h-form-input name="name" label="Title" type="text"></h-form-input>
-  <h-form-input name="year" label="Release year" type="number"></h-form-input>
-  <h-form-input name="imageUrl" label="Image URL" type="url"></h-form-input>
-  <h-form-input name="genders" label="Genders" type="text"></h-form-input>
-  <h-form-input name="imdbUrl" label="IMDB URL" type="url"></h-form-input>
-  <h-form-input name="filmaffinityUrl" label="Filmaffinity URL" type="url"></h-form-input>
+<h-form ng-submit="submit()" name="movieForm">
+  <h-form-input name="id" label="ID" type="text" ng-model="movie.id"></h-form-input>
+  <h-form-input name="name" label="Title" type="text" ng-model="movie.name"></h-form-input>
+  <h-form-input name="year" label="Release year" type="number" ng-model="movie.year"></h-form-input>
+  <h-form-input name="imageUrl" label="Image URL" type="url" ng-model="movie.imageUrl"></h-form-input>
+  <h-form-input name="genders" label="Genders" type="text" ng-model="movie.genders"></h-form-input>
+  <h-form-input name="imdbUrl" label="IMDB URL" type="url" ng-model="movie.imdbUrl"></h-form-input>
+  <h-form-input name="filmaffinityUrl" label="Filmaffinity URL" type="url" ng-model="movie.filmaffinityUrl"></h-form-input>
   <br>
-  <h-form-input name="HD" label="HD Source" type="url"></h-form-input>
-  <h-form-input name="SD" label="SD Source" type="url"></h-form-input>
+  <h-form-input name="HD" label="HD Source" type="url" ng-model="movie.HD"></h-form-input>
+  <h-form-input name="SD" label="SD Source" type="url" ng-model="movie.SD"></h-form-input>
   <br>
-  <h-form-input name="ENCC" label="English CC" type="url"></h-form-input>
-  <h-form-input name="ESCC" label="Spanish CC" type="url"></h-form-input>
+  <h-form-input name="ENCC" label="English CC" type="url" ng-model="movie.ENCC"></h-form-input>
+  <h-form-input name="ESCC" label="Spanish CC" type="url" ng-model="movie.ESCC"></h-form-input>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default">Save</button>
+      <button type="submit" class="btn btn-default" ng-disabled="movieForm.$invalid">Save</button>
     </div>
   </div>
 </h-form>

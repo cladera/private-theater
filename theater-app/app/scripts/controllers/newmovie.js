@@ -1,11 +1,9 @@
 'use strict';
 
 angular.module('privateTheaterApp')
-  .controller('NewmovieCtrl', function ($scope) {
-    //TODO: Implements post movie method
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('NewmovieCtrl', ['$scope', 'Movie',function ($scope, Movie) {
+    $scope.movie = new Movie();
+    $scope.submit = function(success, err){
+      console.log('Sending Movie', $scope.movie);
+    };
+  }]);

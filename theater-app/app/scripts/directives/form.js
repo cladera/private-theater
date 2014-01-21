@@ -20,7 +20,7 @@ angular.module('privateTheaterApp')
   })
   .directive('hFormInput', function(){
     return {
-      require: '^hForm',
+      require: ['^hForm', '?ngModel'],
       templateUrl: 'views/h-form-input.html',
       restrict: 'E',
       transclude: true,
@@ -29,7 +29,24 @@ angular.module('privateTheaterApp')
         label: '@',
         type: '@'
       },
-      link: function(scope, element, attrs, hFormCtrl){
+      link: function(scope, element, attrs, controllers){
+        var hFormCtrl = controllers[0]
+          , ngModel   = controllers[1];
+
+        if(ngModel) {
+          var input = element.find('input');
+          var read = function (){
+            var value = input.val();
+            ngModel.$setViewValue(value);
+          };
+          ngModel.$render = function(){
+            input.val(ngModel.$viewValue || '');
+          };
+          input.on('blur keyup change', function(){
+            scope.$apply(read);
+          });
+          read();
+        }
         attrs = attrs || [];
         hFormCtrl.addHInput(scope);
       }
@@ -37,7 +54,7 @@ angular.module('privateTheaterApp')
   })
   .directive('hFormSelect', function(){
     return {
-      require: '^hForm',
+      require: ['^hForm','?ngModel'],
       templateUrl: 'views/h-form-select.html',
       restrict: 'E',
       transclude: true,
@@ -45,7 +62,23 @@ angular.module('privateTheaterApp')
         name: '@',
         label: '@'
       },
-      link: function(scope, element, attrs, hFormCtrl){
+      link: function(scope, element, attrs, controllers){
+        var hFormCtrl = controllers[0]
+          , ngModel   = controllers[1];
+        if(ngModel) {
+          var input = element.find('select');
+          var read = function (){
+            var value = input.val();
+            ngModel.$setViewValue(value);
+          };
+          ngModel.$render = function(){
+            input.val(ngModel.$viewValue || '');
+          };
+          input.on('blur keyup change', function(){
+            scope.$apply(read);
+          });
+          read();
+        }
         attrs = attrs || [];
         hFormCtrl.addHInput(scope);
       }

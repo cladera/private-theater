@@ -20,8 +20,8 @@ if(process.env.VCAP_SERVICES){
 var config = {
   development: {
     root: rootPath,
-    theaterApp: path.normalize(__dirname + '/../theater-app'),
-    adminApp: path.normalize(__dirname + '/../admin-app'),
+    theaterApp: path.normalize(__dirname + '/../theater-app/app'),
+    adminApp: path.normalize(__dirname + '/../admin-app/app'),
     app: {
       name: 'theater-server'
     },
@@ -31,8 +31,8 @@ var config = {
 
   test: {
     root: rootPath,
-    theaterApp: path.normalize(__dirname + '/../theater-app'),
-    adminApp: path.normalize(__dirname + '/../admin-app'),
+    theaterApp: path.normalize(__dirname + '/../theater-app/dist'),
+    adminApp: path.normalize(__dirname + '/../admin-app/dist'),
     app: {
       name: 'theater-server'
     },
@@ -42,8 +42,8 @@ var config = {
 
   production: {
     root: rootPath,
-    theaterApp: path.normalize(__dirname + '/../theater-app'),
-    adminApp: path.normalize(__dirname + '/../admin-app'),
+    theaterApp: path.normalize(__dirname + '/../theater-app/dist'),
+    adminApp: path.normalize(__dirname + '/../admin-app/dist'),
     app: {
       name: 'theater-server'
     },
