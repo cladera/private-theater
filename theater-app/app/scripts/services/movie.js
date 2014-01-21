@@ -2,11 +2,15 @@
 
 angular.module('privateTheaterApp')
   .factory('Movie', ['$resource', function ($resource) {
-    return $resource('data/:movieId.json',{},{
+    return $resource('movies/:movieId',{},{
       query: {
         method: 'GET',
-        params: {movieId: 'movies'},
+        params: {movieId: 'query'},
         isArray: true
+      },
+      save: {
+        method: 'POST',
+        params: {movieId: 'new'}
       }
     });
   }]);
