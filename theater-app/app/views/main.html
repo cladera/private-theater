@@ -10,12 +10,18 @@
     </form>
     <ul class="nav navbar-nav navbar-right" ng-controller="UserCtrl">
       <li class="dropdown">
-        <a style="cursor: pointer;" class="dropdown-toggle" data-toggle="dropdown">{{user.email}} <b class="caret"></b></a>
+        <a style="cursor: pointer;" class="dropdown-toggle" data-toggle="dropdown"><span ng-bind="user.email"></span> <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li><a href="/#/profile">Profile</a></li>
-          <li ng-if="user.role === 'ADMIN'"><a href="/admin/#/">Admin dashboard</a></li>
+          <li access-level="accessLevel.user">
+            <a href="/#/profile">Profile</a>
+          </li>
+          <li access-level="accessLevel.admin">
+            <a href="/#/admin">Admin dashboard</a>
+          </li>
           <li class="divider"></li>
-          <li><a href="/logout">Log out</a></li>
+          <li access-level="accessLevel.anon">
+            <a href="/logout">Log out</a>
+          </li>
         </ul>
       </li>
     </ul>

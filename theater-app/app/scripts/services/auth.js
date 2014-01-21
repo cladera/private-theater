@@ -3,7 +3,7 @@
 angular.module('privateTheaterApp')
   .service('Auth', ['$cookieStore','$http', function Auth($cookieStore, $http) {
     var userRoles = routingConfig.userRoles;
-    var currentUser = $cookieStore.get('user') || { email: '', role: userRoles.public };
+    var currentUser = $cookieStore.get('user') || { _id: 0, email: '', role: userRoles.public };
 
     $cookieStore.remove('user');
 
@@ -11,7 +11,9 @@ angular.module('privateTheaterApp')
       if(typeof user.role === 'string'){
         user.role = userRoles[user.role.toLowerCase()];
       }
-      currentUser = user;
+      currentUser.email = user.email;
+      currentUser.role = user.role;
+      currentUser._id = user._id;
     }
 
     if(typeof currentUser.role === 'string'){
