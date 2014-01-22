@@ -35,6 +35,16 @@ angular.module('privateTheaterApp', [
         controller: 'NewmovieCtrl',
         access: access.admin
       })
+      .when('/admin/users/new', {
+        templateUrl: 'views/newuser.html',
+        controller: 'NewuserCtrl',
+        access: access.admin
+      })
+      .when('/admin', {
+        templateUrl: 'views/admin.html',
+        controller: 'AdminCtrl',
+        access: access.admin
+      })
       .otherwise({
         redirectTo: '/404'
       });

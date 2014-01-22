@@ -1,0 +1,25 @@
+<navbar>
+  <li access-level="accessLevels.admin" active-nav>
+    <a href="/#/admin">Dashboard</a>
+  </li>
+  <li access-level="accessLevels.admin" active-nav>
+    <a href="/#/admin/movies/new">Add Movie</a>
+  </li>
+  <li access-level="accessLevels.admin" active-nav>
+    <a href="/#/admin/users/new">Add User</a>
+  </li>
+</navbar>
+<legend>Add user</legend>
+<h-form ng-submit="submit()" name="userForm">
+  <h-form-input name="email" label="Email" type="email" ng-model="user.email"></h-form-input>
+  <h-form-input name="password" label="Password" type="password" ng-model="user.password"></h-form-input>
+  <h-form-select name="role" label="Role" ng-model="user.role">
+    <option value="USER">User</option>
+    <option value="ADMIN">Admin</option>
+  </h-form-select>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default" data-ng-disabled="userForm.$invalid">Create</button>
+    </div>
+  </div>
+</h-form>
