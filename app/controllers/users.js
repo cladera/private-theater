@@ -30,7 +30,7 @@ exports.get = function(req, res){
 };
 
 exports.add = function(req, res){
-  if(req.body.email === undefined || req.body.password){
+  if(req.body.email === undefined || req.body.password === undefined){
     return res.send(400);
   }
   req.body.role = req.body.role || 'USER';

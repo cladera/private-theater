@@ -5,7 +5,7 @@ angular.module('privateTheaterApp')
     return $resource('/users/:userId',{},{
       query: {
         method: 'GET',
-        params: {userId: 'query'},
+        params: {userId: 'all'},
         isArray: true
       },
       save: {
