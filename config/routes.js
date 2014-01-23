@@ -18,7 +18,7 @@ module.exports = function(app, passport){
   app.get('/users/all', Auth.isAuthenticatedAdmin, users.all);
   app.get('/users/me', Auth.isAuthenticatedUser, users.me);
   app.get('/users/:userId', Auth.isAuthenticatedAdmin, users.get);
-  app.get('/user/session.json', Auth.isAuthenticatedUser, user.session);
+  app.post('/users/new', Auth.isAuthenticatedAdmin, users.add);
 
   /* Client app routes */
   app.get('/index.html', function(req,res){
@@ -34,7 +34,7 @@ module.exports = function(app, passport){
     res.redirect('/admin/');
   });*/
   //app.get('/admin/', Auth.isAuthenticatedAdmin);
-  //app.post('/admin/users/new', Auth.isAuthenticatedAdmin, admin.postUser);
+  app.post('/admin/users/new', Auth.isAuthenticatedAdmin, admin.postUser);
   //app.post('/admin/movies/new', Auth.isAuthenticatedAdmin, admin.postMovie);
   app.get('/admin/movies/remove', Auth.isAuthenticatedAdmin, admin.removeMovie);
   //app.get('/admin/users', admin.users);
