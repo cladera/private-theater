@@ -50,4 +50,12 @@ UserSchema.statics.isValidUserPassword = function(email, password, done) {
   });
 };
 
+UserSchema.methods.serialize = function(){
+  return {
+    _id: this._id,
+    email: this.email,
+    role: this.role
+  };
+}
+
 mongoose.model('User', UserSchema);

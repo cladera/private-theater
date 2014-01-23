@@ -6,6 +6,8 @@ var User = require('../../app/models/user');
 exports.isAuthenticatedUser = function (req, res, next){
   if(req.isAuthenticated()){
     next();
+  }else {
+    res.send(401);
   }
 };
 exports.isAuthenticatedAdmin = function(req, res, next){
@@ -15,6 +17,8 @@ exports.isAuthenticatedAdmin = function(req, res, next){
     }else {
       res.send(401);
     }
+  }else {
+    res.send(401);
   }
 };
 exports.userExist = function(req, res, next) {

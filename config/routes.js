@@ -2,6 +2,7 @@ module.exports = function(app, passport){
 
 
   var movies  = require('../app/controllers/movies')
+    , users   = require('../app/controllers/users')
     , theater = require('../app/controllers/theater')
     , admin   = require('../app/controllers/admin')
     , user    = require('../app/controllers/user')
@@ -13,7 +14,10 @@ module.exports = function(app, passport){
   app.post('/login', auth.login);
   app.get('/logout', auth.logout);
 
-  /* User session routes */
+  /* Users routes */
+  app.get('/users/all', Auth.isAuthenticatedAdmin, users.all);
+  app.get('/users/me', Auth.isAuthenticatedUser, users.me);
+  app.get('/users/:userId', Auth.isAuthenticatedAdmin, users.get);
   app.get('/user/session.json', Auth.isAuthenticatedUser, user.session);
 
   /* Client app routes */
@@ -37,7 +41,6 @@ module.exports = function(app, passport){
   //app.post('/admin/movie', admin.post);
 
   app.get('/*', function(req, res, next){
-    console.log(req.user);
     var user = req.user || {
       _id: 0,
       email: '',

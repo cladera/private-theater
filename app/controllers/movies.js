@@ -7,7 +7,7 @@ var mongoose = require('mongoose'),
 exports.query = function(req, res){
   Movie.find(function(err, movies){
     if(err){
-      res.send(500);
+      res.send(404);
     }else {
       res.json(movies);
     }
@@ -15,7 +15,11 @@ exports.query = function(req, res){
 }
 exports.get = function(req, res){
   Movie.findOne({id: req.params.movieId}, function(err, movie){
-    res.json(movie);
+    if(err){
+      res.send(404);
+    }else {
+      res.json(movie);
+    }
   });
 }
 exports.add = function(req, res){

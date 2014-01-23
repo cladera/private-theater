@@ -5,7 +5,7 @@ angular.module('privateTheaterApp')
     $scope.error = '';
     $scope.user = new User();
     $scope.submit = function(){
-      $scope.user.$save(function(m){
+      $scope.user.$save(function(){
         $location.path('/admin');
       }, function(){
         $scope.error = 'Impossible to create user'
