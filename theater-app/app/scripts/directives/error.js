@@ -7,7 +7,14 @@ angular.module('privateTheaterApp')
       restrict: 'E',
       transclude: true,
       replace: true,
-      link: function (scope, element, attrs) {
+      link: function (scope, element) {
+        var updateCSS = function () {
+          if(length <= 0) {
+            element.css('display', 'none');
+          }else {
+            element.css('display', prevDisp);
+          }
+        };
         var length = element.text().length
           , prevDisp = element.css('display');
         updateCSS();
@@ -18,14 +25,6 @@ angular.module('privateTheaterApp')
           length = current;
           updateCSS();
         });
-
-        function updateCSS() {
-          if(length <= 0) {
-            element.css('display', 'none');
-          }else {
-            element.css('display', prevDisp);
-          }
-        }
       }
     };
   });

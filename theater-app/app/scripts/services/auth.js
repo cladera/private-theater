@@ -4,6 +4,7 @@ angular.module('privateTheaterApp')
   .service('Auth', ['$cookieStore','$http', function Auth($cookieStore, $http) {
     var userRoles = routingConfig.userRoles;
     var currentUser = $cookieStore.get('user') || { _id: 0, email: '', role: userRoles.public };
+    var accessLevels = routingConfig.accessLevels;
 
     $cookieStore.remove('user');
 
@@ -39,6 +40,7 @@ angular.module('privateTheaterApp')
           success(user);
         }).error(error);
       },
-      user: currentUser
+      user: currentUser,
+      accessLevels: accessLevels
     };
   }]);

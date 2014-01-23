@@ -12,14 +12,14 @@
       <li class="dropdown">
         <a style="cursor: pointer;" class="dropdown-toggle" data-toggle="dropdown"><span ng-bind="user.email"></span> <b class="caret"></b></a>
         <ul class="dropdown-menu">
-          <li access-level="accessLevel.user">
+          <li access-level="user">
             <a href="/#/profile">Profile</a>
           </li>
-          <li access-level="accessLevel.admin">
+          <li access-level="admin">
             <a href="/#/admin">Admin dashboard</a>
           </li>
           <li class="divider"></li>
-          <li access-level="accessLevel.anon">
+          <li access-level="user">
             <a href="/logout">Log out</a>
           </li>
         </ul>

@@ -5,6 +5,16 @@ angular.module('privateTheaterApp')
     return {
       restrict: 'A',
       link: function ($scope, element, attrs) {
+        var updateCSS = function() {
+          if(userRole && accessLevel) {
+            if(!Auth.authorize(accessLevel, userRole)){
+              element.css('display', 'none');
+            } else {
+              element.css('display', prevDisp);
+            }
+          }
+        };
+
         var prevDisp = element.css('display')
           , userRole
           , accessLevel;
@@ -19,20 +29,10 @@ angular.module('privateTheaterApp')
 
         attrs.$observe('accessLevel', function(al) {
           if(al) {
-            accessLevel = $scope.$eval(al);
+            accessLevel = Auth.accessLevels[al];
           }
           updateCSS();
         });
-
-        function updateCSS() {
-          if(userRole && accessLevel) {
-            if(!Auth.authorize(accessLevel, userRole)){
-              element.css('display', 'none');
-            } else {
-              element.css('display', prevDisp);
-            }
-          }
-        }
       }
     };
   }]);

@@ -11,7 +11,7 @@ describe('Directive: error', function () {
     scope = $rootScope.$new();
   }));
 
-  it('should make hidden element visible', inject(function ($compile) {
+  it('should make hidden element visible', inject(function () {
     //TODO: error directive test
     expect(true).toBe(true);
   }));

@@ -8,7 +8,7 @@ angular.module('privateTheaterApp')
       $scope.user.$save(function(){
         $location.path('/admin');
       }, function(){
-        $scope.error = 'Impossible to create user'
+        $scope.error = 'Impossible to create user';
       });
     };
   }]);
