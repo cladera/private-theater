@@ -1,14 +1,17 @@
 /**
  * Created by cgcladera on 08/01/14.
  */
-var mongoose = require('mongoose'),
-  Schema = mongoose.Schema,
+var mongoose    = require('mongoose'),
+  Schema        = mongoose.Schema,
+  LocaleSchema  = require('./locale'),
   hash = require('../util/hash');
 var UserSchema = new Schema({
   email: String,
   hash: String,
   salt: String,
-  role: String
+  role: String,
+  locale: LocaleSchema,
+  createdAt: { type: Date, default: Date.now }
 });
 
 UserSchema.statics.signUp = function(email, password, role, done){

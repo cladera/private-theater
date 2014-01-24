@@ -2,21 +2,9 @@
 /**
  * Created by cgcladera on 07/01/14.
  */
-var mongoose = require('mongoose'),
-  Schema = mongoose.Schema;
-
-var CaptionSchema = new Schema({
-  lang: String,
-  label: String,
-  url: String
-});
-
-var SourceSchema = new Schema({
-  quality: String,
-  label: String,
-  url: String,
-  captions: [CaptionSchema]
-});
+var mongoose    = require('mongoose'),
+  LocaleSchema  = require('./locale'),
+  Schema        = mongoose.Schema;
 
 var MovieSchema = new Schema({
   id: String,
@@ -26,12 +14,8 @@ var MovieSchema = new Schema({
   genders: Array,
   imdbUrl: String,
   filmaffinityUrl: String,
-  sources: [SourceSchema]
+  createdAt: { type: Date, default: Date.now },
+  locale: LocaleSchema
 });
-
-MovieSchema.virtual('date')
-  .get(function(){
-    return this._id.getTimestamp();
-  });
 
 mongoose.model('Movie', MovieSchema);
