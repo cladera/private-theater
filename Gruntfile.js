@@ -44,11 +44,8 @@ module.exports = function (grunt) {
           {expand: true, src: 'public/**', dest: 'dist/'},
           {expand: true, src: 'node_modules/**', dest: 'dist/'},
           {expand: true, src: './*', dest: 'dist/', filter: 'isFile'},
-
           //Frontend apps
-          {expand: true, src: ['theater-app/dist/**'], dest: 'dist/'},
-          {expand: true, src: ['admin-app/dist/**'], dest: 'dist/'}
-
+          {expand: true, src: ['theater-app/dist/**'], dest: 'dist/'}
         ]
       }
     }
