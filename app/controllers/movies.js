@@ -30,9 +30,7 @@ exports.add = function(req, res){
     imageUrl: req.body.imageUrl,
     genders: req.body.genders.split(','),
     imdbUrl: req.body.imdbUrl,
-    filmaffinityUrl: req.body.filmaffinityUrl,
-    HD: req.body.HD,
-    SD: req.body.SD
+    filmaffinityUrl: req.body.filmaffinityUrl
   };
   var movie = new Movie(data);
   if(req.body.ENCC){

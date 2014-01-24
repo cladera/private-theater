@@ -11,6 +11,13 @@ var CaptionSchema = new Schema({
   url: String
 });
 
+var SourceSchema = new Schema({
+  quality: String,
+  label: String,
+  url: String,
+  captions: [CaptionSchema]
+});
+
 var MovieSchema = new Schema({
   id: String,
   name:String,
@@ -19,9 +26,7 @@ var MovieSchema = new Schema({
   genders: Array,
   imdbUrl: String,
   filmaffinityUrl: String,
-  HD: String,
-  SD: String,
-  captions: [CaptionSchema]
+  sources: [SourceSchema]
 });
 
 MovieSchema.virtual('date')
