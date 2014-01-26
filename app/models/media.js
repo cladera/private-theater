@@ -3,13 +3,11 @@
  */
 var mongoose    = require('mongoose'),
   Schema        = mongoose.Schema,
-  MovieSchema   = require('./movie'),
   UserSchema    = require('./user'),
   LocaleSchema  = require('./locale');
 
 
 var CaptionSchema = new Schema({
-  lang: String,
   label: String,
   url: String,
   locale: LocaleSchema
@@ -22,7 +20,7 @@ var MediaSchema = new Schema({
   height: String,
   src: String,
   captions: [CaptionSchema],
-  movie: MovieSchema,
+  movie: Schema.ObjectId,
   creator: UserSchema,
   createdAt: { type: Date, default: Date.now }
 });

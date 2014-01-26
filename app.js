@@ -4,7 +4,7 @@ var express = require('express'),
   passport = require('passport'),
   config = require('./config/config');
 
-console.log('Going live...');
+//TODO: Implement logger
 
 mongoose.connect(config.db);
 var db = mongoose.connection;
