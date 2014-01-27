@@ -26,6 +26,7 @@ module.exports = function(app, passport){
   app.get('/movies/:movieId', Auth.isAuthenticatedUser, movies.get);
   app.delete('/movies/:movieId', Auth.isAuthenticatedAdmin, movies.remove);
   app.post('/movies/new', Auth.isAuthenticatedAdmin, movies.add);
+  app.put('/movies/:movieId', Auth.isAuthenticatedAdmin, movies.update);
 
   app.get('/*', function(req, res, next){
     var user = req.user || {

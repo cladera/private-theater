@@ -11,6 +11,9 @@ angular.module('privateTheaterApp')
       save: {
         method: 'POST',
         params: {movieId: 'new'}
+      },
+      update: {
+        method: 'PUT'
       }
     });
   }]);

@@ -43,41 +43,7 @@ exports.add = function(req, res){
     if(err){
       res.send(500, err);
     }else {
-      if(req.body.HD){
-        var mediaHD = new Media({
-          src: req.body.HD,
-          creator: req.user,
-          movie: m
-        });
-        if(req.body.ENCC){
-          mediaHD.captions.push({
-            locale: {
-              code: 'en',
-              label: 'English'
-            },
-            label: 'English',
-            url: req.body.ENCC
-          });
-        }
-        if(req.body.ESCC){
-          mediaHD.captions.push({
-            locale: {
-              code: 'es',
-              label: 'Spanish'
-            },
-            label: 'English',
-            url: req.body.ESCC
-          });
-        }
-        mediaHD.save(function(err){
-          if(err){
-            console.error(err);
-          }
-          res.send(200, m);
-        });
-      } else {
-        res.send(200, m);
-      }
+      res.send(200, m);
     }
   });
 }
@@ -92,3 +58,24 @@ exports.remove = function(req, res){
     });
   });
 };
+
+exports.update = function(req, res){
+  if(typeof req.body.genders === 'string'){
+    req.body.genders = req.body.genders.split(',');
+  }
+  var data = {
+    id: req.body.id.toLowerCase(),
+    name: req.body.name,
+    year: req.body.year,
+    imageUrl: req.body.imageUrl,
+    genders: req.body.genders,
+    imdbUrl: req.body.imdbUrl,
+    filmaffinityUrl: req.body.filmaffinityUrl
+  };
+  Movie.update({_id: req.body._id}, data,{},function(err){
+    if(err){
+      return res.send(500);
+    }
+    res.send(200);
+  });
+}

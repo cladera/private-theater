@@ -10,7 +10,8 @@
   </li>
 </navbar>
 <legend>Post new movie</legend>
-<h-form ng-submit="submit()" name="movieForm">
+<h-form ng-submit="save()" name="movieForm">
+  <input type="hidden" name="_id" ng-model="movie._id"/>
   <h-form-input name="id" label="ID" type="text" ng-model="movie.id"></h-form-input>
   <h-form-input name="name" label="Title" type="text" ng-model="movie.name"></h-form-input>
   <h-form-input name="year" label="Release year" type="number" ng-model="movie.year"></h-form-input>
