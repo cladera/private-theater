@@ -7,10 +7,8 @@ angular.module('privateTheaterApp')
       src: ''
     };
     $scope.movie = Movie.get({movieId: $routeParams.movieId}, function(movie){
-      if(movie.medias !== undefined && movie.medias.length > 0){
+      if($scope.movie.medias && $scope.movie.medias.length > 0){
         $scope.media = movie.medias[0];
-      }else if(movie.HD !== undefined){
-        $scope.media.src = movie.HD;
       }
     });
     $scope.changeMedia = function(index){
