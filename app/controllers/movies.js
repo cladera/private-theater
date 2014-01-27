@@ -19,7 +19,7 @@ exports.get = function(req, res){
     if(err){
       res.send(404);
     }else {
-      var m = movie.serialize();
+      var m = movie.toObject();
       movie.findMedias(function(err, medias){
         m.medias = medias;
         res.json(m);
