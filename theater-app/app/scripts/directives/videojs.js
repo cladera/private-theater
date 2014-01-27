@@ -8,14 +8,8 @@ angular.module('privateTheaterApp')
         var videoid = scope.movie.id;
         attrs.id = 'videojs-' + videoid;
         element.attr('id', attrs.id);
+        element.attr('src', scope.media.src);
 
-        if(scope.movie.medias !== undefined && scope.movie.medias.length > 0){
-          element.attr('src', scope.movie.medias[0].src);
-        }else if(scope.movie.HD !== undefined ){
-          element.attr('src', scope.movie.HD);
-        }else {
-          element.attr('src', '');
-        }
         angular.forEach(scope.movie.captions, function(caption){
           element.append('<track kind="captions" src="'+caption.url+'" label="'+caption.label+'" srclang="'+caption.lang+'"/>');
         });
@@ -31,6 +25,19 @@ angular.module('privateTheaterApp')
         scope.$on('$destroy', function () {
           element.attr('src', '');
           player.dispose();
+        });
+
+        //Watch media changes
+        scope.$watch(function(){
+          return scope.media.src;
+        }, function(newSrc, oldSrc){
+          console.log('SRC changed');
+          if(newSrc !== oldSrc){
+            player.src([{
+              type: 'video/mp4',
+              src: newSrc
+            }]);
+          }
         });
       });
     };
