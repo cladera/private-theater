@@ -1,14 +1,13 @@
 'use strict';
 
 angular.module('privateTheaterApp')
-  .controller('MovieCtrl', ['$scope', '$sce', '$routeParams', 'Movie', function ($scope, $sce, $routeParams, Movie) {
+  .controller('MovieCtrl', ['$scope', '$sce', '$routeParams', '$location', 'Movie', function ($scope, $sce, $routeParams, $location, Movie) {
+
     $scope.media = {
-      src: '',
-      height: 480,
-      width: 854
+      src: ''
     };
     $scope.movie = Movie.get({movieId: $routeParams.movieId}, function(movie){
-      if(movie.medias !== undefined || movie.medias.length){
+      if(movie.medias !== undefined && movie.medias.length > 0){
         $scope.media = movie.medias[0];
       }else if(movie.HD !== undefined){
         $scope.media.src = movie.HD;
@@ -19,4 +18,12 @@ angular.module('privateTheaterApp')
         $scope.media = $scope.movie.medias[index];
       }
     };
+
+    $scope.deleteMovie = function(){
+      Movie.delete({movieId: $routeParams.movieId}, function(){
+        $location.path('/');
+      });
+    };
+
+
   }]);

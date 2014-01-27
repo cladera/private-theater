@@ -24,6 +24,7 @@ module.exports = function(app, passport){
   /* Movies routes */
   app.get('/movies/query', Auth.isAuthenticatedUser, movies.query);
   app.get('/movies/:movieId', Auth.isAuthenticatedUser, movies.get);
+  app.delete('/movies/:movieId', Auth.isAuthenticatedAdmin, movies.remove);
   app.post('/movies/new', Auth.isAuthenticatedAdmin, movies.add);
 
   app.get('/*', function(req, res, next){
