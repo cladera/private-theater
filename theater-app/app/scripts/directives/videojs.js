@@ -18,8 +18,8 @@ angular.module('privateTheaterApp')
           'controls' : true,
           'preload' : 'auto',
           'autoplay' : false,
-          'height' : 480,
-          'width' : 854
+          'height' : scope.media.height || 480,
+          'width' : scope.media.width || 854
         };
         var player = videojs(attrs.id, setup);
         scope.$on('$destroy', function () {
