@@ -9,7 +9,6 @@ angular.module('privateTheaterApp')
         attrs.id = 'videojs-' + videoid;
         element.attr('id', attrs.id);
 
-        console.log(scope.movie);
         if(scope.movie.medias !== undefined && scope.movie.medias.length > 0){
           element.attr('src', scope.movie.medias[0].src);
         }else if(scope.movie.HD !== undefined ){
