@@ -14,7 +14,7 @@ var CaptionSchema = new Schema({
 });
 
 var MediaSchema = new Schema({
-  originalLocale: LocaleSchema,
+  audio: LocaleSchema,
   quality: String,
   width: String,
   height: String,
