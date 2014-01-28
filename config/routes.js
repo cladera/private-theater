@@ -22,6 +22,7 @@ module.exports = function(app, passport){
     res.redirect('/');
   });
   /* Movies routes */
+  app.post('/movies/:movieId/medias/new', Auth.isAuthenticatedAdmin, movies.addMedia);
   app.get('/movies/query', Auth.isAuthenticatedUser, movies.query);
   app.get('/movies/:movieId', Auth.isAuthenticatedUser, movies.get);
   app.delete('/movies/:movieId', Auth.isAuthenticatedAdmin, movies.remove);

@@ -78,4 +78,20 @@ exports.update = function(req, res){
     }
     res.send(200);
   });
-}
+};
+
+exports.addMedia = function(req, res){
+  Movie.findOne({id: req.params.movieId}, function(err, movie){
+    if(err){
+      return res.send(400);
+    }
+    req.body.movie = movie._id;
+    var media = new Media(req.body);
+    media.save(function(err, m){
+      if(err){
+        return res.send(500);
+      }
+      res.json(200, m);
+    });
+  });
+};

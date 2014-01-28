@@ -42,7 +42,6 @@
       </div>
       <div class="modal-body">
         <h-form name="mediaForm">
-          <input type="hidden" name="movie" value="{{movie._id}}"/>
           <h-form-select label="Quality" ng-model="newMedia.quality">
             <option>4K</option>
             <option>2K</option>
@@ -55,7 +54,6 @@
           <h-form-input label="Width" type="number" ng-model="newMedia.width"></h-form-input>
           <h-form-input label="Audio Language" ng-model="newMedia.audio.label"></h-form-input>
           <h-form-input label="Audio ISO" ng-model="newMedia.audio.code"></h-form-input>
-
         </h-form>
       </div>
       <div class="modal-footer">
