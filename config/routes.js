@@ -23,6 +23,7 @@ module.exports = function(app, passport){
   });
   /* Movies routes */
   app.post('/movies/:movieId/medias/new', Auth.isAuthenticatedAdmin, movies.addMedia);
+  app.delete('/movies/:movieId/medias/:mediaId', Auth.isAuthenticatedAdmin, movies.deleteMedia);
   app.get('/movies/query', Auth.isAuthenticatedUser, movies.query);
   app.get('/movies/:movieId', Auth.isAuthenticatedUser, movies.get);
   app.delete('/movies/:movieId', Auth.isAuthenticatedAdmin, movies.remove);

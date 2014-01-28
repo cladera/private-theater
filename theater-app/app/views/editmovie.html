@@ -31,7 +31,12 @@
 <h2>Medias</h2>
 <button class="btn btn-primary" data-toggle="modal" data-target="#newMediaModal">Add media</button>
 <ul style="margin-top: 10px; margin-bottom: 10px;" class="list-group">
-  <li class="list-group-item" ng-repeat="media in movie.medias">{{media.audio.label}}:{{media.quality}} - <a href="{{media.src}}">{{media.src}}</a></li>
+  <li class="list-group-item" ng-repeat="media in movie.medias">
+    {{media.audio.label}}:{{media.quality}} - <a href="{{media.src}}">{{media.src}}</a>
+    <span class="pull-right">
+      <button class="btn btn-danger btn-xs" ng-click="deleteMedia(media._id)">Delete</button>
+    </span>
+  </li>
 </ul>
 <div class="modal fade" id="newMediaModal" tabindex="-1" role="dialog" aria-labelledby="newMediaLabel" aria-hidden="true">
   <div class="modal-dialog">

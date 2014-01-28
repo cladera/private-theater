@@ -20,4 +20,15 @@ angular.module('privateTheaterApp')
 
       });
     };
+    $scope.deleteMedia = function(_id){
+      Media.delete({movieId: $scope.movie.id, mediaId: _id}, function(){
+        for(var index in $scope.movie.medias){
+          var m = $scope.movie.medias[index];
+          if(m._id === _id){
+            $scope.movie.medias.splice(index,1);
+            break;
+          }
+        }
+      });
+    };
   }]);
