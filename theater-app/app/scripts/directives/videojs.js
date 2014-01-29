@@ -10,8 +10,8 @@ angular.module('privateTheaterApp')
         element.attr('id', attrs.id);
         element.attr('src', scope.media.src);
 
-        angular.forEach(scope.movie.captions, function(caption){
-          element.append('<track kind="captions" src="'+caption.url+'" label="'+caption.label+'" srclang="'+caption.lang+'"/>');
+        angular.forEach(scope.media.captions, function(caption){
+          element.append('<track kind="captions" src="'+caption.src+'" label="'+caption.locale.label+'" srclang="'+caption.locale.code+'"/>');
         });
         var setup = {
           'techOrder' : ['html5', 'flash'],
