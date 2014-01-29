@@ -9,7 +9,7 @@ var mongoose    = require('mongoose'),
 
 var CaptionSchema = new Schema({
   label: String,
-  url: String,
+  src: String,
   locale: LocaleSchema
 });
 

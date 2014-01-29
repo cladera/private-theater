@@ -10,7 +10,7 @@
   </li>
 </navbar>
 <h1>{{movie.name}}</h1>
-<legend>Basic info</legend>
+<legend>Movie metadata</legend>
 <h-form ng-submit="save()" name="movieForm">
   <input type="hidden" name="_id" ng-model="movie._id"/>
   <h-form-input name="id" label="ID" type="text" ng-model="movie.id"></h-form-input>
@@ -22,7 +22,7 @@
   <h-form-input name="filmaffinityUrl" label="Filmaffinity URL" type="url" ng-model="movie.filmaffinityUrl"></h-form-input>
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
-      <button type="submit" class="btn btn-default" ng-disabled="movieForm.$invalid">Save</button>
+      <button type="submit" class="btn btn-default" ng-disabled="movieForm.$invalid">Save changes</button>
     </div>
   </div>
   <error ng-bind="error"></error>
@@ -54,11 +54,17 @@
             <option>720p</option>
             <option>SD</option>
           </h-form-select>
-          <h-form-input label="SRC" type="url" ng-model="newMedia.src"></h-form-input>
-          <h-form-input label="Height" type="number" ng-model="newMedia.height"></h-form-input>
-          <h-form-input label="Width" type="number" ng-model="newMedia.width"></h-form-input>
-          <h-form-input label="Audio Language" ng-model="newMedia.audio.label"></h-form-input>
-          <h-form-input label="Audio ISO" ng-model="newMedia.audio.code"></h-form-input>
+          <h-form-input label="SRC" type="url" name="src" ng-model="newMedia.src"></h-form-input>
+          <h-form-input label="Height" type="number" name="height" ng-model="newMedia.height"></h-form-input>
+          <h-form-input label="Width" type="number" name="width" ng-model="newMedia.width"></h-form-input>
+          <h-form-input label="Audio Language" name="audioLabel" ng-model="newMedia.audio.label"></h-form-input>
+          <h-form-input label="Audio ISO" name="audioCode" ng-model="newMedia.audio.code"></h-form-input>
+          <div ng-repeat="caption in newMedia.captions">
+            <h-form-input label="Caption Label" ng-model="caption.locale.label"></h-form-input>
+            <h-form-input label="Caption ISO" ng-model="caption.locale.code"></h-form-input>
+            <h-form-input label="Caption SRC" type="url" ng-model="caption.src"></h-form-input>
+          </div>
+          <a href ng-click="addCaption()">Add caption</a>
         </h-form>
       </div>
       <div class="modal-footer">

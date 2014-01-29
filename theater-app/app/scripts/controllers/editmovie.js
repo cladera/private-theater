@@ -20,6 +20,18 @@ angular.module('privateTheaterApp')
 
       });
     };
+    $scope.addCaption = function(){
+      if($scope.newMedia.captions === undefined){
+        $scope.newMedia.captions = [];
+      }
+      $scope.newMedia.captions.push({
+        locale: {
+          label: '',
+          code: ''
+        },
+        src: 'http://'
+      });
+    };
     $scope.deleteMedia = function(_id){
       Media.delete({movieId: $scope.movie.id, mediaId: _id}, function(){
         for(var index in $scope.movie.medias){
