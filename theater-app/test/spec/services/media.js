@@ -6,13 +6,13 @@ describe('Service: media', function () {
   beforeEach(module('privateTheaterApp'));
 
   // instantiate service
-  var media;
-  beforeEach(inject(function (_media_) {
-    media = _media_;
+  var Media;
+  beforeEach(inject(function (_Media_) {
+    Media = _Media_;
   }));
 
   it('should do something', function () {
-    expect(!!media).toBe(true);
+    expect(!!Media).toBe(true);
   });
 
 });
