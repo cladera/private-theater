@@ -4,10 +4,15 @@ angular.module('privateTheaterApp')
   .controller('EditmovieCtrl', ['$scope', '$routeParams', '$location', 'Movie', 'Media', function ($scope, $routeParams, $location, Movie, Media) {
     $scope.movie = Movie.get({movieId: $routeParams.movieId});
     $scope.newMedia = new Media();
+    $scope.deletable = true;
     $scope.save = function(){
       Movie.update({movieId: $scope.movie.id}, $scope.movie);
     };
-
+    $scope.deleteMovie = function(){
+      Movie.delete({movieId: $routeParams.movieId}, function(){
+        $location.path('/');
+      });
+    };
     $scope.createMedia = function(){
       $scope.newMedia.$save({movieId: $scope.movie.id, mediaId: 'new'}, function(media, resp){
         if(!media){

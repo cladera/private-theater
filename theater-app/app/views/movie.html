@@ -1,7 +1,23 @@
 <navbar></navbar>
-<h1 class="text-center">{{ movie.name }}</h1>
-<video videojs class="video-js vjs-default-skin"></video>
-<div access-level="admin">
-  <a href="#" ng-click="deleteMovie()">Delete movie</a>
-  <a href="#/admin/movie/{{movie.id}}/edit">Edit movie</a>
+<h1>{{ movie.name }}</h1>
+<hr>
+<div class="movie-player row">
+  <div class="col-md-9">
+    <video videojs class="video-js vjs-default-skin"></video>
+    <div style="margin-top: 10px;" access-level="admin">
+      <span class="pull-right">
+        <a class="btn btn-warning btn-xs" href="/#/admin/movie/{{movie.id}}/edit"><span class="glyphicon glyphicon-edit"></span> Edit</a>
+      </span>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <h3>Qualities</h3>
+    <div class="well well-sm">
+      <ul class="nav nav-pills nav-stacked">
+        <li ng-repeat="m in movie.medias" ng-class="{active: m._id === media._id}">
+          <a ng-href="/#/movies/{{movie.id}}/{{$index}}">{{m.audio.label}}:{{m.quality}}</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>

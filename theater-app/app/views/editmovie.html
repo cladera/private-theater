@@ -23,6 +23,8 @@
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-default" ng-disabled="movieForm.$invalid">Save changes</button>
+      <!-- TODO: Delete comfirmation -->
+      <button type="button" class="btn btn-danger" ng-click="deleteMovie()">Delete movie</button>
     </div>
   </div>
   <error ng-bind="error"></error>
@@ -34,6 +36,7 @@
   <li class="list-group-item" ng-repeat="media in movie.medias">
     {{media.audio.label}}:{{media.quality}} - <a href="{{media.src}}">{{media.src}}</a>
     <span class="pull-right">
+      <!-- TODO: Delete confirmation -->
       <button class="btn btn-danger btn-xs" ng-click="deleteMedia(media._id)">Delete</button>
     </span>
   </li>

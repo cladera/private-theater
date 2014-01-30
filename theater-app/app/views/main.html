@@ -37,9 +37,9 @@
   <input type="checkbox" ng-model="reverse"/>
   <ul class="movies">
     <li ng-repeat="movie in movies | filter:query | orderBy:orderProp:reverse">
-      <a href="#/movies/{{movie.id}}" class="thumb"><img class="img-thumbnail movie" ng-src="{{movie.imageUrl}}"></a>
+      <a ng-href="/#/movies/{{movie.id}}/0" class="thumb"><img class="img-thumbnail movie" ng-src="{{movie.imageUrl}}"></a>
       <div class="description">
-        <a href="#/movies/{{movie.id}}" class="title">{{movie.name}} ({{movie.year}})</a>
+        <a ng-href="/#/movies/{{movie.id}}/0" class="title">{{movie.name}} ({{movie.year}})</a>
       </div>
     </li>
   </ul>

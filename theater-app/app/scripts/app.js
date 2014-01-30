@@ -14,7 +14,7 @@ angular.module('privateTheaterApp', [
         controller: 'MainCtrl',
         access: access.user
       })
-      .when('/movies/:movieId', {
+      .when('/movies/:movieId/:mediaIndex?', {
         templateUrl: 'views/movie.html',
         controller: 'MovieCtrl',
         access: access.user
