@@ -14,6 +14,11 @@ angular.module('privateTheaterApp', [
         controller: 'MainCtrl',
         access: access.user
       })
+      .when('/admin/movie/:movieId/edit', {
+        templateUrl: 'views/editmovie.html',
+        controller: 'EditmovieCtrl',
+        access: access.admin
+      })
       .when('/movies/:movieId/:mediaIndex?', {
         templateUrl: 'views/movie.html',
         controller: 'MovieCtrl',
@@ -43,11 +48,6 @@ angular.module('privateTheaterApp', [
       .when('/admin', {
         templateUrl: 'views/admin.html',
         controller: 'AdminCtrl',
-        access: access.admin
-      })
-      .when('/admin/movie/:movieId/edit', {
-        templateUrl: 'views/editmovie.html',
-        controller: 'EditmovieCtrl',
         access: access.admin
       })
       .otherwise({

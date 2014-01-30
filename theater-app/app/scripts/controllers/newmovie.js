@@ -7,7 +7,7 @@ angular.module('privateTheaterApp')
     $scope.submit = function(){
       $scope.movie.$save(function(m){
         if(m){
-          $location.path('/movies/' + m.id + '/edit');
+          $location.path('/admin/movie/' + m.id + '/edit');
         }
       }, function(){
         $scope.error = 'Impossible to save movie';
