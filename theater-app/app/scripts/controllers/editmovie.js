@@ -2,9 +2,9 @@
 
 angular.module('privateTheaterApp')
   .controller('EditmovieCtrl', ['$scope', '$routeParams', '$location', 'Movie', 'Media', function ($scope, $routeParams, $location, Movie, Media) {
+    //TODO: Flash errors
     $scope.movie = Movie.get({movieId: $routeParams.movieId});
     $scope.newMedia = new Media();
-    $scope.deletable = true;
     $scope.save = function(){
       Movie.update({movieId: $scope.movie.id}, $scope.movie);
     };
