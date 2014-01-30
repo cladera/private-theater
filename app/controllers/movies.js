@@ -49,12 +49,20 @@ exports.add = function(req, res){
 }
 exports.remove = function(req, res){
   Movie.findOne({id: req.params.movieId}, function(err, movie){
-    movie.remove(function(err){
+    if(err){
+      return res.send(404);
+    }
+    Media.remove({movie: movie._id}, function(err){
       if(err){
-        res.send(500);
-      }else {
-        res.send(200);
+        return res.send(500);
       }
+      movie.remove(function(err){
+        if(err){
+          res.send(500);
+        }else {
+          res.send(200);
+        }
+      });
     });
   });
 };
