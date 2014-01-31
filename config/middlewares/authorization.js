@@ -12,7 +12,7 @@ exports.isAuthenticatedUser = function (req, res, next){
 };
 exports.isAuthenticatedAdmin = function(req, res, next){
   if(req.isAuthenticated()){
-    if(req.user.role === 'ADMIN'){
+    if(req.user.role.toLowerCase() === 'admin'){
       next();
     }else {
       res.send(401);

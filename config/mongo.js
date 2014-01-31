@@ -1,6 +1,7 @@
 /**
  * Created by cgcladera on 12/01/14.
  */
+
 module.exports = function(mongo){
   mongo.hostname = (mongo.hostname || 'localhost');
   mongo.port = (mongo.port || 27017);
