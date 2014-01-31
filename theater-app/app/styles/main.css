@@ -4,6 +4,12 @@ body {
   padding-bottom: 20px;
 }
 
+img.app-icon
+{
+  margin-bottom: 3px;
+  width: 11px;
+}
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,

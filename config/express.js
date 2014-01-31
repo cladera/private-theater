@@ -19,6 +19,7 @@ module.exports = function(app, config, passport) {
     app.use(flash());
     app.use(app.router);
     app.use(express.static(config.theaterApp));
+    app.use(express.static(config.root + '/public/'));
     app.use(function(req, res) {
       res.status(404).sendfile(config.root+'/public/404.html');
     });
