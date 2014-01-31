@@ -1,7 +1,11 @@
 <navbar></navbar>
 <h1>{{ movie.name }}</h1>
 <hr>
-<div class="movie-player row">
+<div ng-if="movie.medias.length === 0" class="alert alert-info">
+  <h3 style="margin-top: 0px;">Comming soon</h3>
+  <p>There are no medias available for this movie yet.</p>
+</div>
+<div ng-if="movie.medias.length > 0" class="movie-player row">
   <div class="col-md-9">
     <video videojs class="video-js vjs-default-skin"></video>
     <div style="margin-top: 10px;" access-level="admin">
