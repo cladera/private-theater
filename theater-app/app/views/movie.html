@@ -1,5 +1,12 @@
 <navbar></navbar>
-<h1>{{ movie.name }}</h1>
+<h1>
+  {{ movie.name }}
+  <span access-level="admin">
+    <a class="btn btn-warning btn-xs" href="/#/admin/movie/{{movie.id}}/edit">
+      <span class="glyphicon glyphicon-edit"></span> Edit
+    </a>
+  </span>
+</h1>
 <hr>
 <div ng-if="movie.medias.length === 0" class="alert alert-info">
   <h3 style="margin-top: 0px;">Comming soon</h3>
@@ -8,11 +15,6 @@
 <div ng-if="movie.medias.length > 0" class="movie-player row">
   <div class="col-md-9">
     <video videojs class="video-js vjs-default-skin"></video>
-    <div style="margin-top: 10px;" access-level="admin">
-      <span class="pull-right">
-        <a class="btn btn-warning btn-xs" href="/#/admin/movie/{{movie.id}}/edit"><span class="glyphicon glyphicon-edit"></span> Edit</a>
-      </span>
-    </div>
   </div>
   <div class="col-md-3">
     <h3>Qualities</h3>
