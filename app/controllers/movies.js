@@ -14,7 +14,7 @@ exports.query = function(req, res){
       res.json(movies);
     }
   });
-}
+};
 exports.get = function(req, res){
   Movie.findOne({id: req.params.movieId}, function(err, movie){
     if(err){
@@ -27,7 +27,7 @@ exports.get = function(req, res){
       });
     }
   });
-}
+};
 exports.add = function(req, res){
   //TODO: Check request
   var data = {
@@ -47,7 +47,7 @@ exports.add = function(req, res){
       res.send(200, m);
     }
   });
-}
+};
 exports.remove = function(req, res){
   Movie.findOne({id: req.params.movieId}, function(err, movie){
     if(err){
@@ -129,7 +129,7 @@ exports.deleteMedia = function(req, res) {
 };
 
 exports.notificateError = function(req, res){
-  Media.findOne({_id: req.params.mediaId}, function(err){
+  Media.findOne({_id: req.params.mediaId}, function(err, media){
     if(err || media === undefined){
       return res.send(400);
     }
