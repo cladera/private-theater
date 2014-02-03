@@ -94,6 +94,7 @@ exports.addMedia = function(req, res){
       return res.send(400);
     }
     req.body.movie = movie._id;
+    req.body.creator = req.user._id;
     var media = new Media(req.body);
     media.save(function(err, m){
       if(err){

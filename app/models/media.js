@@ -21,7 +21,7 @@ var MediaSchema = new Schema({
   src: String,
   captions: [CaptionSchema],
   movie: Schema.ObjectId,
-  creator: UserSchema,
+  creator: Schema.ObjectId,
   createdAt: { type: Date, default: Date.now }
 });
 
