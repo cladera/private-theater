@@ -3,7 +3,6 @@
  */
 var mongoose    = require('mongoose'),
   Schema        = mongoose.Schema,
-  UserSchema    = require('./user'),
   LocaleSchema  = require('./locale');
 
 
