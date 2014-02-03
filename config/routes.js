@@ -1,4 +1,4 @@
-module.exports = function(app, passport){
+module.exports = function(app){
 
 
   var movies  = require('../app/controllers/movies')
@@ -22,6 +22,7 @@ module.exports = function(app, passport){
     res.redirect('/');
   });
   /* Movies routes */
+  app.post('/movies/media/:mediaId/error', Auth.isAuthenticatedUser, movies.notificateError);
   app.post('/movies/:movieId/medias/new', Auth.isAuthenticatedAdmin, movies.addMedia);
   app.delete('/movies/:movieId/medias/:mediaId', Auth.isAuthenticatedAdmin, movies.deleteMedia);
   app.get('/movies/query', Auth.isAuthenticatedUser, movies.query);
@@ -29,6 +30,7 @@ module.exports = function(app, passport){
   app.delete('/movies/:movieId', Auth.isAuthenticatedAdmin, movies.remove);
   app.post('/movies/new', Auth.isAuthenticatedAdmin, movies.add);
   app.put('/movies/:movieId', Auth.isAuthenticatedAdmin, movies.update);
+
 
   app.get('/*', function(req, res, next){
     var user = req.user || {
