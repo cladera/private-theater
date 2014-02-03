@@ -1,9 +1,10 @@
 /**
  * Created by cgcladera on 21/01/14.
  */
-var mongoose  = require('mongoose'),
-  Movie       = mongoose.model('Movie'),
-  Media       = mongoose.model('Media');
+var mongoose        = require('mongoose'),
+  Movie             = mongoose.model('Movie'),
+  Media             = mongoose.model('Media'),
+  ErrorNotification = mongoose.model('ErrorNotification');
 
 exports.query = function(req, res){
   Movie.find(function(err, movies){
@@ -123,6 +124,23 @@ exports.deleteMedia = function(req, res) {
         }
         res.send(200);
       });
+    });
+  });
+};
+
+exports.notificateError = function(req, res){
+  Media.findOne({_id: req.params.mediaId}, function(err){
+    if(err || media === undefined){
+      return res.send(400);
+    }
+    req.body.user = req.user._id;
+    req.body.media = req.media._id;
+    var notification = new ErrorNotification(req.body);
+    notification.save(function(err, n){
+      if(err){
+        return res.send(500);
+      }
+      res.json(n);
     });
   });
 };
