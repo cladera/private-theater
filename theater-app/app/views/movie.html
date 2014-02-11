@@ -15,6 +15,36 @@
 <div ng-if="movie.medias.length > 0" class="movie-player row">
   <div class="col-md-9">
     <video videojs class="video-js vjs-default-skin"></video>
+    <div ng-controller="MediaErrorsPublisherCtrl">
+      <span class="pull-right">
+        <a href data-toggle="modal" data-target="#reportErrorModal" style="font-size: 0.8em;"><span class="glyphicon glyphicon-info-sign"></span> report an error</a>
+      </span>
+      <div class="modal fade" id="reportErrorModal" tabindex="-1" role="dialog" aria-labelledby="reportErrorLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h4 class="modal-title" id="reportErrorLabel">Report an error</h4>
+            </div>
+            <div class="modal-body">
+              <h-form name="reportForm">
+                <div class="radio" ng-repeat="predef in predefs">
+                  <input type="radio" ng-model="error.body" ng-value="predef" checked="false" name="body"/>
+                  {{predef}}
+                </div>
+                <hr>
+                <textarea class="form-control" placeholder="Error description" ng-model="error.body" required>
+                </textarea>
+              </h-form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+              <button type="button" class="btn btn-primary" ng-disabled="reportForm.$invalid" ng-click="submit()">Send</button>
+            </div>
+          </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+      </div><!-- /.modal -->
+    </div>
   </div>
   <div class="col-md-3">
     <h3>Sources</h3>

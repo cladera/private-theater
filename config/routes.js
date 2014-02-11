@@ -22,7 +22,7 @@ module.exports = function(app){
     res.redirect('/');
   });
   /* Movies routes */
-  app.post('/movies/media/:mediaId/error', Auth.isAuthenticatedUser, movies.notificateError);
+  app.post('/movies/media/:mediaId/reports', Auth.isAuthenticatedUser, movies.notificateError);
   app.post('/movies/:movieId/medias/new', Auth.isAuthenticatedAdmin, movies.addMedia);
   app.delete('/movies/:movieId/medias/:mediaId', Auth.isAuthenticatedAdmin, movies.deleteMedia);
   app.get('/movies/query', Auth.isAuthenticatedUser, movies.query);

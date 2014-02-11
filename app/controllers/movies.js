@@ -134,7 +134,6 @@ exports.notificateError = function(req, res){
       return res.send(400);
     }
     req.body.user = req.user._id;
-    req.body.media = req.media._id;
     var notification = new ErrorNotification(req.body);
     notification.save(function(err, n){
       if(err){
