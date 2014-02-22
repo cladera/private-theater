@@ -1,12 +1,9 @@
 module.exports = function(app){
-
-
   var movies  = require('../app/controllers/movies')
     , users   = require('../app/controllers/users')
     , auth    = require('../app/controllers/auth')
     , path    = require('path')
     , Auth    = require('./middlewares/authorization');
-
 
   app.post('/login', auth.login);
   app.get('/logout', auth.logout);
@@ -17,19 +14,21 @@ module.exports = function(app){
   app.get('/users/:userId', Auth.isAuthenticatedAdmin, users.get);
   app.post('/users/new', Auth.isAuthenticatedAdmin, users.add);
 
+
   /* Client app routes */
   app.get('/index.html', function(req,res){
     res.redirect('/');
   });
-  /* Movies routes */
-  app.post('/movies/media/:mediaId/reports', Auth.isAuthenticatedUser, movies.notificateError);
-  app.post('/movies/:movieId/medias/new', Auth.isAuthenticatedAdmin, movies.addMedia);
-  app.delete('/movies/:movieId/medias/:mediaId', Auth.isAuthenticatedAdmin, movies.deleteMedia);
+  /* Movies API */
+  app.post('/movies/reports/new', Auth.isAuthenticatedUser, movies.notificateError);
+  app.get('/movies/reports/all', Auth.isAuthenticatedAdmin, movies.getMediaErrors);
   app.get('/movies/query', Auth.isAuthenticatedUser, movies.query);
   app.get('/movies/:movieId', Auth.isAuthenticatedUser, movies.get);
   app.delete('/movies/:movieId', Auth.isAuthenticatedAdmin, movies.remove);
   app.post('/movies/new', Auth.isAuthenticatedAdmin, movies.add);
   app.put('/movies/:movieId', Auth.isAuthenticatedAdmin, movies.update);
+  app.post('/movies/:movieId/medias/new', Auth.isAuthenticatedAdmin, movies.addMedia);
+  app.delete('/movies/:movieId/medias/:mediaId', Auth.isAuthenticatedAdmin, movies.deleteMedia);
 
 
   app.get('/*', function(req, res, next){

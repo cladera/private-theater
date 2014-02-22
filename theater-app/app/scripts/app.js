@@ -35,6 +35,10 @@ angular.module('privateTheaterApp', [
         access: access.anon
 
       })
+      .when('/admin/reports', {
+        templateUrl: 'views/adminreports.html',
+        controller: 'AdminReportsCtrl'
+      })
       .when('/admin/movies/new', {
         templateUrl: 'views/newmovie.html',
         controller: 'NewmovieCtrl',

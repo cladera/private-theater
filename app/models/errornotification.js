@@ -2,7 +2,9 @@
  * Created by cgcladera on 03/02/14.
  */
 var mongoose    = require('mongoose'),
-  Schema        = mongoose.Schema;
+  Schema        = mongoose.Schema,
+  Movie         = require('./movie'),
+  Media         = require('./media');
 
 var ErrorNotificationSchema = new Schema({
   media: Schema.ObjectId,
@@ -13,5 +15,15 @@ var ErrorNotificationSchema = new Schema({
   subject: String,
   body: String
 });
+ErrorNotificationSchema.statics.getAll = function(handler){
+  var ErrorNotification = this;
+  ErrorNotification.find(function(err, results){
+    if(err){
+      handler(err);
+    }else {
+      handler(null, results);
+    }
+  });
 
+};
 mongoose.model('ErrorNotification', ErrorNotificationSchema);

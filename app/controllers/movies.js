@@ -11,8 +11,10 @@ exports.query = function(req, res){
     if(err){
       res.send(404);
     }else {
+      console.log(movies[0].__proto__);
       res.json(movies);
     }
+
   });
 };
 exports.get = function(req, res){
@@ -129,7 +131,7 @@ exports.deleteMedia = function(req, res) {
 };
 
 exports.notificateError = function(req, res){
-  Media.findOne({_id: req.params.mediaId}, function(err, media){
+  Media.findOne({_id: req.body.media}, function(err, media){
     if(err || media === undefined){
       return res.send(400);
     }
@@ -141,5 +143,14 @@ exports.notificateError = function(req, res){
       }
       res.json(n);
     });
+  });
+};
+
+exports.getMediaErrors = function(req, res){
+  ErrorNotification.getAll(function(err, errors){
+    if(err){
+      return res.send(500);
+    }
+    res.json(errors);
   });
 };

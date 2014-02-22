@@ -1,6 +1,6 @@
 <navbar>
   <li access-level="accessLevels.admin" active-nav>
-  <a href="/#/admin">Dashboard</a>
+    <a href="/#/admin">Dashboard</a>
   </li>
   <li access-level="accessLevels.admin" active-nav>
     <a href="/#/admin/movies/new">Add Movie</a>
@@ -9,4 +9,10 @@
     <a href="/#/admin/users/new">Add User</a>
   </li>
 </navbar>
-<admin-dashboard-nav/>
+<admin-dashboard-nav></admin-dashboard-nav>
+    <h1>Movies reports</h1>
+  <ul>
+    <li ng-repeat="report in reports">
+      {{report._id}} - {{report.body}}
+    </li>
+  </ul>
