@@ -32,7 +32,7 @@ module.exports = function(app){
   /* Medias API */
   app.get('/medias/:mediaId', Auth.isAuthenticatedUser, medias.get);
   app.post('/medias/:mediaId', Auth.isAuthenticatedAdmin, medias.new);
-  app.delete('/medias/:mediaId', Auth.isAuthenticatedAdmin, movies.delete);
+  app.delete('/medias/:mediaId', Auth.isAuthenticatedAdmin, medias.delete);
 
 
   app.get('/*', function(req, res, next){
