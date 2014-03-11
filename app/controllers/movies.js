@@ -11,7 +11,6 @@ exports.query = function(req, res){
     if(err){
       res.send(404);
     }else {
-      console.log(movies[0].__proto__);
       res.json(movies);
     }
 
@@ -88,45 +87,6 @@ exports.update = function(req, res){
       return res.send(500);
     }
     res.send(200);
-  });
-};
-
-exports.addMedia = function(req, res){
-  Movie.findOne({id: req.params.movieId}, function(err, movie){
-    if(err){
-      return res.send(400);
-    }
-    req.body.movie = movie._id;
-    req.body.creator = req.user._id;
-    var media = new Media(req.body);
-    media.save(function(err, m){
-      if(err){
-        return res.send(500);
-      }
-      res.json(200, m);
-    });
-  });
-};
-
-exports.deleteMedia = function(req, res) {
-  Movie.findOne({id: req.params.movieId}, function(err, movie){
-    if(err){
-      return res.send(400);
-    }
-    Media.findOne({_id: req.params.mediaId}, function(err, media){
-      if(err){
-        return res.send(400);
-      }
-      if(String(movie._id) !== String(media.movie)){
-        return res.send(401);
-      }
-      media.remove(function(err){
-        if(err){
-          return res.send(500);
-        }
-        res.send(200);
-      });
-    });
   });
 };
 

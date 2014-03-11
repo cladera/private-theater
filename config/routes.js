@@ -1,5 +1,6 @@
 module.exports = function(app){
   var movies  = require('../app/controllers/movies')
+    , medias  = require('../app/controllers/medias')
     , users   = require('../app/controllers/users')
     , auth    = require('../app/controllers/auth')
     , path    = require('path')
@@ -27,8 +28,11 @@ module.exports = function(app){
   app.delete('/movies/:movieId', Auth.isAuthenticatedAdmin, movies.remove);
   app.post('/movies/new', Auth.isAuthenticatedAdmin, movies.add);
   app.put('/movies/:movieId', Auth.isAuthenticatedAdmin, movies.update);
-  app.post('/movies/:movieId/medias/new', Auth.isAuthenticatedAdmin, movies.addMedia);
-  app.delete('/movies/:movieId/medias/:mediaId', Auth.isAuthenticatedAdmin, movies.deleteMedia);
+
+  /* Medias API */
+  app.get('/medias/:mediaId', Auth.isAuthenticatedUser, medias.get);
+  app.post('/medias/:mediaId', Auth.isAuthenticatedAdmin, medias.new);
+  app.delete('/medias/:mediaId', Auth.isAuthenticatedAdmin, movies.delete);
 
 
   app.get('/*', function(req, res, next){
