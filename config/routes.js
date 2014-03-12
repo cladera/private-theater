@@ -30,7 +30,7 @@ module.exports = function(app){
   app.put('/movies/:movieId', Auth.isAuthenticatedAdmin, movies.update);
 
   /* Medias API */
-  app.post('/medias', Auth.isAuthenticatedAdmin, medias.new);
+  app.post('/medias/new', Auth.isAuthenticatedAdmin, medias.new);
   app.get('/medias/all', Auth.isAuthenticatedUser, medias.all);
   app.get('/medias/:mediaId', Auth.isAuthenticatedUser, medias.get);
   app.delete('/medias/:mediaId', Auth.isAuthenticatedAdmin, medias.delete);
