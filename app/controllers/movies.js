@@ -15,6 +15,7 @@ exports.query = function(req, res){
   });
 };
 exports.get = function(req, res){
+  //TODO: Implements mongoose population
   var key = 'id';
   if(req.query.byId && req.query.byId === 'true'){
     key = '_id';
@@ -37,7 +38,7 @@ exports.get = function(req, res){
   });
 };
 exports.add = function(req, res){
-  //TODO: Check request
+  //TODO: Check request?
   var data = {
     id: req.body.id.toLowerCase(),
     name: req.body.name,
