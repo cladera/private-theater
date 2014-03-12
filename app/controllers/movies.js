@@ -9,11 +9,9 @@ var mongoose        = require('mongoose'),
 exports.query = function(req, res){
   Movie.find(function(err, movies){
     if(err){
-      res.send(404);
-    }else {
-      res.json(movies);
+      return res.send(500);
     }
-
+    res.json(movies);
   });
 };
 exports.get = function(req, res){
