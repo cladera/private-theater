@@ -13,6 +13,7 @@
     <h1>Movies reports</h1>
   <ul>
     <li ng-repeat="report in reports">
-      {{report._id}} - {{report.body}}
+      <media media-id="{{report.media}}"></media>
+      {{report.body}}
     </li>
   </ul>
