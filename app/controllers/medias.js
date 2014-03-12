@@ -2,10 +2,38 @@
  * Created by cgcladera on 11/03/14.
  */
 var mongoose      = require('mongoose'),
-  Media           = mongoose.model('Media');
+  Media           = mongoose.model('Media'),
+  Movie           = mongoose.model('Movie');
+
+exports.all = function (req, res){
+  if(req.query.movieId){
+    Movie.findOne({_id: req.query.movieId},function(err, movie){
+      if(err){
+        return res.send(500);
+      }
+      if(!movie){
+        return res.send(404);
+      }
+      Media.find({movie : movie._id}, function(err, medias){
+        if(err){
+          return res.send(500);
+        }
+        res.json(medias);
+      });
+    });
+  }else {
+    Media.find(function(err, medias){
+      if(err){
+        return res.send(500);
+      }
+      res.json(medias);
+    });
+  }
+
+};
 
 exports.get = function (req, res){
-  Media.findOne({_id: req.params.movieId}, function(err, media){
+  Media.findOne({_id: req.params.mediaId}, function(err, media){
     if(err){
       return res.send(500);
     }
