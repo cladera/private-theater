@@ -17,16 +17,25 @@ exports.query = function(req, res){
   });
 };
 exports.get = function(req, res){
-  Movie.findOne({id: req.params.movieId}, function(err, movie){
+  var key = 'id';
+  if(req.query.byId && req.query.byId === 'true'){
+    key = '_id';
+  }
+  var query = {};
+  query[key] = req.params.movieId;
+  console.log(query);
+  Movie.findOne(query, function(err, movie){
     if(err){
-      res.send(404);
-    }else {
-      var m = movie.toObject();
-      movie.findMedias(function(err, medias){
-        m.medias = medias;
-        res.json(m);
-      });
+      return res.send(404);
     }
+    if(!movie){
+      return res.send(404);
+    }
+    var m = movie.toObject();
+    movie.findMedias(function(err, medias){
+      m.medias = medias;
+      res.json(m);
+    });
   });
 };
 exports.add = function(req, res){
