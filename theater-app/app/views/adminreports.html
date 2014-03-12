@@ -13,9 +13,12 @@
 <h1>Movies reports</h1>
 <table class="table table-striped">
   <tbody>
-    <tr ng-repeat="report in reports">
+    <tr class="report" ng-repeat="report in reports">
       <td>
         <media media-id="{{report.media}}"></media>{{report.body}}
+      </td>
+      <td class="text-right">
+        <button class="btn btn-default">Close</button>
       </td>
     </tr>
   </tbody>

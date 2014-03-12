@@ -154,3 +154,14 @@ div.video-js {
 .form-signin button[type="submit"] {
   margin-bottom: 10px;
 }
+
+/*Movie errors reports*/
+tbody > tr.report > td {
+  line-height: 40px;
+}
+tr.report > td > button {
+  display: none;
+}
+tr.report:hover > td > button {
+  display: inline-block;
+}
