@@ -33,6 +33,7 @@ module.exports = function(app){
   app.post('/medias/new', Auth.isAuthenticatedAdmin, medias.new);
   app.get('/medias/all', Auth.isAuthenticatedUser, medias.all);
   app.get('/medias/:mediaId', Auth.isAuthenticatedUser, medias.get);
+  app.put('/medias/:mediaId', Auth.isAuthenticatedAdmin, medias.update);
   app.delete('/medias/:mediaId', Auth.isAuthenticatedAdmin, medias.delete);
 
 

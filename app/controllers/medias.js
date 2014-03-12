@@ -69,3 +69,11 @@ exports.delete = function(req, res){
     });
   });
 };
+exports.update = function(req, res){
+  Media.update({_id: req.body._id}, req.body, function(err){
+    if(err){
+      return res.send(500);
+    }
+    res.send(200);
+  });
+};
