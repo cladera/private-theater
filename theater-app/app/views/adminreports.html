@@ -18,9 +18,9 @@
         <media media-id="{{report.media}}"></media>{{report.body}}
       </td>
       <td class="text-right">
-        <button class="btn btn-sm btn-danger">Discard</button>
-        <button class="btn btn-sm btn-primary">Processing</button>
-        <button class="btn btn-sm btn-success">Close</button>
+        <button ng-if="report.status != 'discarted'" class="btn btn-sm btn-danger" ng-click="updateStatus(report, 'discarted')">Discard</button>
+        <button ng-if="report.status != 'processing'" class="btn btn-sm btn-primary" ng-click="updateStatus(report, 'processing')">Processing</button>
+        <button ng-if="report.status != 'closed'" class="btn btn-sm btn-success" ng-click="updateStatus(report, 'closed')">Close</button>
       </td>
     </tr>
   </tbody>
