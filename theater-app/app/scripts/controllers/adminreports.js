@@ -6,6 +6,8 @@ angular.module('privateTheaterApp')
     $scope.updateStatus = function (report, status){
       var prevStatus = report.status;
       report.status = status;
-      //TODO: Update report
+      report.$update(function(){
+        console.log(report);
+      });
     };
   }]);

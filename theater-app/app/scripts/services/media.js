@@ -2,7 +2,7 @@
 
 angular.module('privateTheaterApp')
   .factory('Media', ['$resource', function ($resource) {
-    return $resource('medias/:mediaId', {mediaId: '@id'},{
+    return $resource('medias/:mediaId', {mediaId: '@_id'},{
       query: {
         method: 'GET',
         params: {
