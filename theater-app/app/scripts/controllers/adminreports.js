@@ -5,7 +5,8 @@ angular.module('privateTheaterApp')
     $scope.statusFilter = 'open';
     $scope.reports = MediaError.query();
     $scope.updateStatus = function (report, status){
-      var prevStatus = report.status;
+      //TODO: Restore previous status if update fails
+      // var prevStatus = report.status;
       report.status = status;
       report.$update(function(){
         console.log(report);

@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Directive: media', function () {
+describe('Directive: adminDashboardNav', function () {
 
   // load the directive's module
   beforeEach(module('privateTheaterApp'));
@@ -13,9 +13,9 @@ describe('Directive: media', function () {
   }));
 
   it('should make hidden element visible', inject(function ($compile) {
-    element = angular.element('<media></media>');
+    element = angular.element('<admin-dashboard-nav></admin-dashboard-nav>');
     element = $compile(element)(scope);
-    //TODO: Media directive tests
+    //TODO: Admin Dashboard nav bar tests
     expect(true).toBe(true);
   }));
 });

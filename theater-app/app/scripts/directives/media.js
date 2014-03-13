@@ -2,7 +2,7 @@
 
 //TODO: Cache
 angular.module('privateTheaterApp')
-  .directive('media', ['Media', 'Movie',function (Media, Movie) {
+  .directive('media', ['Media',function (Media) {
     return {
       templateUrl: 'views/directives/media.html',
       restrict: 'E',

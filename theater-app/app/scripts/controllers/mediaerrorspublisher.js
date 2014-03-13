@@ -11,6 +11,9 @@ angular.module('privateTheaterApp')
       'Captions are not in correct language',
       'Captions are not properly synced'
     ];
+    if(!$scope.media){
+      return;
+    }
     $scope.error = new MediaError();
     $scope.error.media = $scope.media._id;
     $scope.submit = function(){
