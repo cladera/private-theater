@@ -1,5 +1,6 @@
 'use strict';
 
+//TODO: Cache
 angular.module('privateTheaterApp')
   .directive('media', ['Media', 'Movie',function (Media, Movie) {
     return {
