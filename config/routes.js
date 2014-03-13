@@ -1,9 +1,9 @@
 module.exports = function(app){
   var movies  = require('../app/controllers/movies')
     , medias  = require('../app/controllers/medias')
+    , reports = require('../app/controllers/reports')
     , users   = require('../app/controllers/users')
     , auth    = require('../app/controllers/auth')
-    , path    = require('path')
     , Auth    = require('./middlewares/authorization');
 
   app.post('/login', auth.login);
@@ -20,9 +20,8 @@ module.exports = function(app){
   app.get('/index.html', function(req,res){
     res.redirect('/');
   });
+
   /* Movies API */
-  app.post('/movies/reports/new', Auth.isAuthenticatedUser, movies.notificateError);
-  app.get('/movies/reports/all', Auth.isAuthenticatedAdmin, movies.getMediaErrors);
   app.get('/movies/query', Auth.isAuthenticatedUser, movies.query);
   app.get('/movies/:movieId', Auth.isAuthenticatedUser, movies.get);
   app.delete('/movies/:movieId', Auth.isAuthenticatedAdmin, movies.remove);
@@ -35,6 +34,13 @@ module.exports = function(app){
   app.get('/medias/:mediaId', Auth.isAuthenticatedUser, medias.get);
   app.put('/medias/:mediaId', Auth.isAuthenticatedAdmin, medias.update);
   app.delete('/medias/:mediaId', Auth.isAuthenticatedAdmin, medias.delete);
+
+  /* Error Notifications API */
+  app.post('/reports/new', Auth.isAuthenticatedAdmin, reports.new);
+  app.get('/reports/all', Auth.isAuthenticatedAdmin, reports.all);
+  app.get('/reports/:reportId', Auth.isAuthenticatedUser, reports.get);
+  app.put('/reports/:reportId', Auth.isAuthenticatedAdmin, reports.update);
+  app.delete('/reports/:reportId', Auth.isAuthenticatedAdmin, reports.delete);
 
 
   app.get('/*', function(req, res, next){

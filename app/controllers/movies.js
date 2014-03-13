@@ -3,40 +3,8 @@
  */
 var mongoose        = require('mongoose'),
   Movie             = mongoose.model('Movie'),
-  Media             = mongoose.model('Media'),
-  ErrorNotification = mongoose.model('ErrorNotification');
+  Media             = mongoose.model('Media');
 
-exports.query = function(req, res){
-  Movie.find(function(err, movies){
-    if(err){
-      return res.send(500);
-    }
-    res.json(movies);
-  });
-};
-exports.get = function(req, res){
-  //TODO: Implements mongoose population
-  var key = 'id';
-  if(req.query.byId && req.query.byId === 'true'){
-    key = '_id';
-  }
-  var query = {};
-  query[key] = req.params.movieId;
-  console.log(query);
-  Movie.findOne(query, function(err, movie){
-    if(err){
-      return res.send(404);
-    }
-    if(!movie){
-      return res.send(404);
-    }
-    var m = movie.toObject();
-    movie.findMedias(function(err, medias){
-      m.medias = medias;
-      res.json(m);
-    });
-  });
-};
 exports.add = function(req, res){
   //TODO: Check request?
   var data = {
@@ -57,22 +25,36 @@ exports.add = function(req, res){
     }
   });
 };
-exports.remove = function(req, res){
-  Movie.findOne({id: req.params.movieId}, function(err, movie){
+
+exports.query = function(req, res){
+  Movie.find(function(err, movies){
+    if(err){
+      return res.send(500);
+    }
+    res.json(movies);
+  });
+};
+
+exports.get = function(req, res){
+  //TODO: Implements mongoose population
+  var key = 'id';
+  if(req.query.byId && req.query.byId === 'true'){
+    key = '_id';
+  }
+  var query = {};
+  query[key] = req.params.movieId;
+  console.log(query);
+  Movie.findOne(query, function(err, movie){
     if(err){
       return res.send(404);
     }
-    Media.remove({movie: movie._id}, function(err){
-      if(err){
-        return res.send(500);
-      }
-      movie.remove(function(err){
-        if(err){
-          res.send(500);
-        }else {
-          res.send(200);
-        }
-      });
+    if(!movie){
+      return res.send(404);
+    }
+    var m = movie.toObject();
+    movie.findMedias(function(err, medias){
+      m.medias = medias;
+      res.json(m);
     });
   });
 };
@@ -98,27 +80,22 @@ exports.update = function(req, res){
   });
 };
 
-exports.notificateError = function(req, res){
-  Media.findOne({_id: req.body.media}, function(err, media){
-    if(err || media === undefined){
-      return res.send(400);
+exports.remove = function(req, res){
+  Movie.findOne({id: req.params.movieId}, function(err, movie){
+    if(err){
+      return res.send(404);
     }
-    req.body.user = req.user._id;
-    var notification = new ErrorNotification(req.body);
-    notification.save(function(err, n){
+    Media.remove({movie: movie._id}, function(err){
       if(err){
         return res.send(500);
       }
-      res.json(n);
+      movie.remove(function(err){
+        if(err){
+          res.send(500);
+        }else {
+          res.send(200);
+        }
+      });
     });
-  });
-};
-
-exports.getMediaErrors = function(req, res){
-  ErrorNotification.getAll(function(err, errors){
-    if(err){
-      return res.send(500);
-    }
-    res.json(errors);
   });
 };
