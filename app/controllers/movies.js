@@ -43,7 +43,6 @@ exports.get = function(req, res){
   }
   var query = {};
   query[key] = req.params.movieId;
-  console.log(query);
   Movie.findOne(query, function(err, movie){
     if(err){
       return res.send(404);
