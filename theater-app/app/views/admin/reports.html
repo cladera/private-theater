@@ -20,6 +20,9 @@
     </ul>
   </div>
   <div class="col-md-9">
+    <alert type="'info'" class="text-center" ng-if="(reports | filter:{status:statusFilter}).length <= 0">
+      No reports to show
+    </alert>
     <table class="table table-bordered">
       <tbody>
       <tr class="report" ng-repeat="report in reports | filter:{status:statusFilter}">

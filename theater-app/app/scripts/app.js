@@ -37,7 +37,7 @@ angular.module('privateTheaterApp', [
 
       })
       .when('/admin/reports', {
-        templateUrl: 'views/adminreports.html',
+        templateUrl: 'views/admin/reports.html',
         controller: 'AdminReportsCtrl'
       })
       .when('/admin/movies/new', {
