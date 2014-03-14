@@ -1,10 +1,7 @@
 'use strict';
 
 angular.module('privateTheaterApp')
-  .controller('AdminCtrl', function ($scope) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
-  });
+  .controller('AdminCtrl', ['$scope', '$rootScope', 'MediaError',function ($scope, $rootScope, MediaError) {
+    $rootScope.reports = MediaError.query();
+    $scope.reports = $rootScope.reports;
+  }]);

@@ -51,7 +51,7 @@ angular.module('privateTheaterApp', [
         access: access.admin
       })
       .when('/admin', {
-        templateUrl: 'views/admin.html',
+        templateUrl: 'views/admin/index.html',
         controller: 'AdminCtrl',
         access: access.admin
       })
