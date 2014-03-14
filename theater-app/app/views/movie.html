@@ -8,10 +8,10 @@
   </span>
 </h1>
 <hr>
-<div ng-if="movie.medias.length === 0" class="alert alert-info">
+<alert type="info" ng-if="movie.medias.length === 0">
   <h3 style="margin-top: 0px;">Coming soon</h3>
   <p>There are no medias available for this movie yet.</p>
-</div>
+</alert>
 <div ng-if="movie.medias.length > 0" class="movie-player row">
   <div class="col-md-9">
     <video videojs class="video-js vjs-default-skin"></video>

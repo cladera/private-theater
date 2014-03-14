@@ -4,7 +4,8 @@ angular.module('privateTheaterApp', [
   'ngCookies',
   'ngResource',
   'ngSanitize',
-  'ngRoute'
+  'ngRoute',
+  'ui.bootstrap'
 ])
   .config(['$routeProvider', '$locationProvider',function ($routeProvider) {
     var access = routingConfig.accessLevels;
