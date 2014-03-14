@@ -16,7 +16,7 @@ angular.module('privateTheaterApp', [
         access: access.user
       })
       .when('/admin/movie/:movieId/edit', {
-        templateUrl: 'views/editmovie/index.html',
+        templateUrl: 'views/movie/edit.html',
         controller: 'EditmovieCtrl',
         access: access.admin
       })
