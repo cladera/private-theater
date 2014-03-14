@@ -21,7 +21,7 @@ angular.module('privateTheaterApp')
     };
 
     //Rerpot Modal Instance
-    var ReportModalInstanceCtrl = function($scope, $modalInstance, error){
+    var ReportModalInstanceCtrl = ['$scope','$modalInstance', 'error', function($scope, $modalInstance, error){
       $scope.predefs = [
         'Audio is poor or missing',
         'Incorrect quality',
@@ -46,5 +46,5 @@ angular.module('privateTheaterApp')
       $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
       };
-    };
+    }]
   }]);
