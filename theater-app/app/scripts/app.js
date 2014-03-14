@@ -16,12 +16,12 @@ angular.module('privateTheaterApp', [
         access: access.user
       })
       .when('/admin/movie/:movieId/edit', {
-        templateUrl: 'views/editmovie.html',
+        templateUrl: 'views/editmovie/index.html',
         controller: 'EditmovieCtrl',
         access: access.admin
       })
       .when('/movies/:movieId/:mediaIndex?', {
-        templateUrl: 'views/movie.html',
+        templateUrl: 'views/movie/index.html',
         controller: 'MovieCtrl',
         access: access.user
       })

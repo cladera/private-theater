@@ -1,0 +1,18 @@
+<div class="modal-header">
+  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+  <h4 class="modal-title" id="reportErrorLabel">Report an error</h4>
+</div>
+<div class="modal-body">
+  <h-form name="reportForm">
+    <div class="radio" ng-repeat="predef in predefs">
+      <input type="radio" ng-model="error.body" ng-value="predef" checked="false" name="body"/>
+      {{predef}}
+    </div>
+    <textarea style="margin-top: 1em;" class="form-control" placeholder="Error description" ng-model="error.body" required>
+    </textarea>
+  </h-form>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="cancel()">Cancel</button>
+  <button type="button" class="btn btn-primary" ng-disabled="reportForm.$invalid" ng-click="ok()">Send</button>
+</div>
