@@ -26,9 +26,11 @@
     </alert>
     <table class="table table-bordered">
       <tbody>
-      <tr class="report" ng-repeat="report in reports | filter:{status:statusFilter}">
+      <tr class="report" ng-repeat="report in reports | filter:{status:statusFilter}" ng-class='statusClasses[report.status]'>
         <td style="border-right: none;">
-          <media media-id="{{report.media}}"></media>{{report.body}}
+          <media media-id="{{report.media}}"></media>
+          <span>{{report.body}}</span>
+          <span ng-class="statusLabels[report.status]" class="label">{{report.status}}</span>
         </td>
         <td class="text-right" style="border-left: none;">
           <button ng-if="report.status != 'open'" class="btn btn-sm btn-primary" ng-click="updateStatus(report, 'open')">Reopen</button>

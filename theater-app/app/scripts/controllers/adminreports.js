@@ -3,6 +3,16 @@
 angular.module('privateTheaterApp')
   .controller('AdminReportsCtrl', ['$scope', '$rootScope', 'MediaError', function ($scope, $rootScope, MediaError) {
     $scope.statusFilter = 'open';
+    $scope.statusClasses = {
+      open: '',
+      closed: 'success',
+      discarted: 'active'
+    };
+    $scope.statusLabels = {
+      open: 'label-info',
+      closed: 'label-success',
+      discarted: 'label-danger'
+    };
     if(!$rootScope.reports){
       $rootScope.reports = MediaError.query();
     }
