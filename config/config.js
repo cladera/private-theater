@@ -36,7 +36,7 @@ var config = {
       name: 'theater-server'
     },
     port: 9000,
-    db: 'mongodb://localhost/backend-test'
+    db: 'mongodb://localhost/backend-development'
   },
 
   production: {
