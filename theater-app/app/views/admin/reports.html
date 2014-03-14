@@ -9,12 +9,13 @@
     <a href="/#/admin/users/new">Add User</a>
   </li>
 </navbar>
-<admin-dashboard-nav></admin-dashboard-nav>
+<admin-dashboard-nav reports="(reports | filter:{status:'open'}).length"></admin-dashboard-nav>
+
 <div class="row">
   <div class="col-md-3">
     <legend>State</legend>
     <ul class="nav nav-pills" style="font-size: 0.9em;">
-      <li ng-class="{ active: isFilterActive('open')}"><a href="" ng-click="statusFilter = 'open'">Open</a></li>
+      <li ng-class="{ active: isFilterActive('open')}"><a href="" ng-click="statusFilter = 'open'">Open <span class="badge">{{(reports | filter:{status:'open'}).length}}</span></a></li>
       <li ng-class="{ active: isFilterActive('closed')}"><a href="" ng-click="statusFilter = 'closed'">Closed</a></li>
       <li ng-class="{ active: isFilterActive('')}"><a href="" ng-click="statusFilter = ''">All</a></li>
     </ul>

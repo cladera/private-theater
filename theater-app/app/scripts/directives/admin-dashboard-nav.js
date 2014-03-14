@@ -5,6 +5,9 @@ angular.module('privateTheaterApp')
     return {
       templateUrl: 'views/directives/admin-dashboard-nav.html',
       restrict: 'E',
+      scope:{
+        reports: '='
+      },
       link: function postLink() {
       }
     };
