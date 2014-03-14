@@ -46,5 +46,5 @@ angular.module('privateTheaterApp')
       $scope.cancel = function () {
         $modalInstance.dismiss('cancel');
       };
-    }]
+    }];
   }]);
