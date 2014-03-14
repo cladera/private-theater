@@ -9,7 +9,7 @@ angular.module('privateTheaterApp')
       }
       $scope.error = new MediaError();
       $scope.error.media = $scope.media._id;
-      var modal = $modal.open({
+      $modal.open({
         templateUrl: 'views/movie/report-modal.html',
         controller: ReportModalInstanceCtrl,
         resolve: {
