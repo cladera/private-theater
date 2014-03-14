@@ -35,6 +35,16 @@ module.exports = function (grunt) {
         options: { livereload: reloadPort }
       }
     },
+    clean: {
+      dist: {
+        files: [{
+          dot: true,
+          src:[
+            'dist/*'
+          ]
+        }]
+      }
+    },
     copy: {
       dist: {
         files: [
@@ -70,5 +80,5 @@ module.exports = function (grunt) {
   });
 
   grunt.registerTask('default', ['develop', 'watch']);
-  grunt.registerTask('dist', ['copy:dist']);
+  grunt.registerTask('dist', ['clean:dist', 'copy:dist']);
 };
