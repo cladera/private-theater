@@ -2,6 +2,8 @@
 
 angular.module('privateTheaterApp')
   .controller('AdminCtrl', ['$scope', '$rootScope', 'MediaError',function ($scope, $rootScope, MediaError) {
-    $rootScope.reports = MediaError.query();
+    if(!$rootScope.reports){
+      $rootScope.reports = MediaError.query();
+    }
     $scope.reports = $rootScope.reports;
   }]);
