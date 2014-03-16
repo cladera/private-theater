@@ -1,6 +1,13 @@
 'use strict';
 
 describe('Controller: MainCtrl', function () {
+  beforeEach(function(){
+    this.addMatchers({
+      toEqualData: function(expected) {
+        return angular.equals(this.actual, expected);
+      }
+    });
+  });
   // load the controller's module
   beforeEach(module('privateTheaterApp'));
 
@@ -22,10 +29,18 @@ describe('Controller: MainCtrl', function () {
     });
   }));
 
-  it('should load 1 movie', function () {
-    expect(scope.movies.length).toBe(0);
+  it('should create "movies" model with one movies fetched from xhr', function () {
+    expect(scope.movies).toEqualData([]);
 
     httpBackend.flush();
-    expect(scope.movies.length).toBe(1);
+    expect(scope.movies).toEqualData([{
+      id: 0,
+      name: 'Brave'
+    }]);
   });
+
+  it('should set the default value of orderProp model', function() {
+    expect(scope.orderProp).toBe('year');
+  });
+
 });
