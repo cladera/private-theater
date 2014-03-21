@@ -21,7 +21,7 @@ angular.module('privateTheaterApp')
     };
 
     //Rerpot Modal Instance
-    var ReportModalInstanceCtrl = ['$scope','$modalInstance', 'error', function($scope, $modalInstance, error){
+    var ReportModalInstanceCtrl = ['$scope', '$rootScope','$modalInstance', 'error', 'MediaError', function($scope, $rootScope, $modalInstance, error, MediaError){
       $scope.predefs = [
         'Audio is poor or missing',
         'Incorrect quality',
@@ -33,9 +33,10 @@ angular.module('privateTheaterApp')
       ];
       $scope.error = error;
       $scope.ok = function(){
-        $scope.error.$save(function(error){
-          if(error){
+        $scope.error.$save(function(report){
+          if(report){
             $modalInstance.close();
+            $rootScope.reports = MediaError.query();
           }else {
             console.err('Error! Media report was not sent');
           }
