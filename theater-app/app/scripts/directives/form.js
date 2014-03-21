@@ -3,7 +3,7 @@
 angular.module('privateTheaterApp')
   .directive('hForm', function () {
     return {
-      templateUrl: 'views/h-form.html',
+      templateUrl: 'views/directives/h-form.html',
       restrict: 'E',
       transclude: true,
       scope: {
@@ -21,7 +21,7 @@ angular.module('privateTheaterApp')
   .directive('hFormInput', function(){
     return {
       require: ['^hForm', '?ngModel'],
-      templateUrl: 'views/h-form-input.html',
+      templateUrl: 'views/directives/h-form-input.html',
       restrict: 'E',
       transclude: true,
       scope: {
@@ -55,7 +55,7 @@ angular.module('privateTheaterApp')
   .directive('hFormSelect', function(){
     return {
       require: ['^hForm','?ngModel'],
-      templateUrl: 'views/h-form-select.html',
+      templateUrl: 'views/directives/h-form-select.html',
       restrict: 'E',
       transclude: true,
       scope: {
@@ -87,7 +87,7 @@ angular.module('privateTheaterApp')
   .directive('hFormRadio', function(){
     return {
       require: ['^hForm', '?ngModel'],
-      templateUrl: 'views/h-form-radio.html',
+      templateUrl: 'views/directives/h-form-radio.html',
       restrict: 'E',
       transclude: true,
       scope: {
