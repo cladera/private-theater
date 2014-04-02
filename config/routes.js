@@ -36,7 +36,7 @@ module.exports = function(app){
   app.delete('/medias/:mediaId', Auth.isAuthenticatedAdmin, medias.delete);
 
   /* Error Notifications API */
-  app.post('/reports/new', Auth.isAuthenticatedAdmin, reports.new);
+  app.post('/reports/new', Auth.isAuthenticatedUser, reports.new);
   app.get('/reports/all', Auth.isAuthenticatedAdmin, reports.all);
   app.get('/reports/:reportId', Auth.isAuthenticatedUser, reports.get);
   app.put('/reports/:reportId', Auth.isAuthenticatedAdmin, reports.update);
