@@ -1,2 +1,51 @@
 <navbar></navbar>
-<h1>Coming soon...</h1>
+<legend>User profile</legend>
+<div class="col-md-7">
+  <form class="form-horizontal" method="POST" name="profileForm" ng-submit="update()">
+    <div class="form-group">
+      <label for="email" class="col-sm-2 control-label">Email</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="email" placeholder="Email" name="email" ng-model="me.email" disabled>
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="username" class="col-sm-2 control-label">Username</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="username" placeholder="Username" name="username" ng-model="me.displayName">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="firstName" class="col-sm-2 control-label">First name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="firstName" placeholder="First name" name="firstName" ng-model="me.name.givenName">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="lastName" class="col-sm-2 control-label">Last name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="lastName" placeholder="Last name" name="lastName" ng-model="me.name.familyName">
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-primary" ng-disabled="profileForm.$invalid">Update</button>
+      </div>
+    </div>
+  </form>
+</div>
+<div class="col-md-5">
+  <div class="row">
+    <div class="col-md-6 col-xs-3 col-md-offset-3 col-xs-offset-5">
+      <a href="#" class="thumbnail" style="margin-bottom: 0.5em;">
+        <img gravatar-src="me.email" gravatar-size="200"/>
+      </a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-xs-3 col-md-offset-3 col-xs-offset-5">
+     <div class="alert alert-info" style="padding: 0.5em;">
+       <small>We use <a href="http://www.gravatar.com" target="_blank">Gravatar</a> for your profile' picture.</small>
+     </div>
+    </div>
+  </div>
+</div>

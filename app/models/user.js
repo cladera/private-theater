@@ -6,7 +6,14 @@ var mongoose    = require('mongoose'),
   LocaleSchema  = require('./locale'),
   hash = require('../util/hash');
 var UserSchema = new Schema({
+  provider: {type:String, default: 'local'},
   email: String,
+  displayName: String,
+  name: {
+    familyName: String,
+    givenName: String,
+    middleName: String
+  },
   hash: String,
   salt: String,
   role: String,
@@ -52,13 +59,17 @@ UserSchema.statics.isValidUserPassword = function(email, password, done) {
     });
   });
 };
-
+if (!UserSchema.options.toObject) UserSchema.options.toObject = {};
+UserSchema.options.toObject.transform = function(doc, ret){
+  delete ret.salt;
+  delete ret.hash;
+};
+/**
+ * @deprecated Use built-in toObject method
+ * @returns {*|Binary|Array|Object}
+ */
 UserSchema.methods.serialize = function(){
-  return {
-    _id: this._id,
-    email: this.email,
-    role: this.role
-  };
+  return this.toObject();
 }
 
 mongoose.model('User', UserSchema);

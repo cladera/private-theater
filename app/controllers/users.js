@@ -57,3 +57,15 @@ exports.add = function(req, res){
 exports.me = function(req, res){
   res.json(req.user.serialize());
 };
+
+exports.update = function(req, res){
+  var _id = req.body._id;
+  delete req.body._id;
+  User.update({_id: _id},req.body,{},function(err, user){
+    if(err){
+      return res.send(500,err);
+    }
+    console.log(user);
+    res.json(user);
+  });
+};

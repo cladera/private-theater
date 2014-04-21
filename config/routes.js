@@ -12,8 +12,9 @@ module.exports = function(app){
   /* Users routes */
   app.get('/users/all', Auth.isAuthenticatedAdmin, users.all);
   app.get('/users/me', Auth.isAuthenticatedUser, users.me);
-  app.get('/users/:userId', Auth.isAuthenticatedAdmin, users.get);
   app.post('/users/new', Auth.isAuthenticatedAdmin, users.add);
+  app.get('/users/:userId', Auth.isAuthenticatedAdmin, users.get);
+  app.put('/users/:userId', Auth.isAuthenticatedUser, users.update);
 
 
   /* Client app routes */
@@ -44,16 +45,20 @@ module.exports = function(app){
 
 
   app.get('/*', function(req, res, next){
-    var user = req.user || {
-      _id: 0,
-      email: '',
-      role: 'PUBLIC'
-    };
-    res.cookie('user', JSON.stringify({
-      _id: user._id,
-      email: user.email,
-      role: user.role
-    }));
+    if(req.user){
+      res.cookie('user', JSON.stringify(req.user.toObject()));
+    }else {
+      var user = {
+        _id: 0,
+        email: '',
+        role: 'PUBLIC'
+      };
+      res.cookie('user', JSON.stringify({
+        _id: user._id,
+        email: user.email,
+        role: user.role
+      }));
+    }
     next();
   });
 };

@@ -14,7 +14,9 @@
       </ul>
       <ul class="nav navbar-nav navbar-right" ng-controller="UserCtrl">
         <li class="dropdown">
-          <a style="cursor: pointer;" class="dropdown-toggle" data-toggle="dropdown"><img gravatar-src="user.email" gravatar-size="20"/> {{user.email}} <b class="caret"></b></a>
+          <a style="cursor: pointer;" class="dropdown-toggle" data-toggle="dropdown">
+            <img gravatar-src="user.email" gravatar-size="20"/> {{user.displayName || user.email}} <b class="caret"></b>
+          </a>
           <ul class="dropdown-menu">
             <li>
               <a href="/#/profile">Profile</a>

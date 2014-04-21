@@ -15,6 +15,7 @@ angular.module('privateTheaterApp')
       currentUser.email = user.email;
       currentUser.role = user.role;
       currentUser._id = user._id;
+      currentUser.displayName = user.displayName;
     }
 
     if(typeof currentUser.role === 'string'){
@@ -23,14 +24,16 @@ angular.module('privateTheaterApp')
     return {
       /* jshint bitwise: false */
       authorize: function(accessLevel, role){
-        if(role === undefined){
-          role = currentUser.role;
+        role = role || currentUser.role;
+        if(!role || !role.bitMask){
+          return false;
         }
         return accessLevel.bitMask & role.bitMask;
       },
       isLoggedIn: function(user) {
-        if(user === undefined){
-          user = currentUser;
+        user = user || currentUser;
+        if(!currentUser || !currentUser.role || currentUser.role.title){
+          return false;
         }
         return user.role.title === userRoles.user.title || user.role.title === userRoles.admin.title;
       },
@@ -39,6 +42,9 @@ angular.module('privateTheaterApp')
           changeUser(user);
           success(user);
         }).error(error);
+      },
+      updateUser: function(user){
+        changeUser(user);
       },
       user: currentUser,
       accessLevels: accessLevels

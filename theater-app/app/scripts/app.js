@@ -7,9 +7,10 @@ angular.module('privateTheaterApp', [
   'ngRoute',
   'ngAnimate',
   'ui.bootstrap',
-  'ui.gravatar'
+  'ui.gravatar',
+  'cgNotify'
 ])
-  .config(['$routeProvider', '$locationProvider',function ($routeProvider) {
+  .config(['$routeProvider',function ($routeProvider) {
     var access = routingConfig.accessLevels;
     $routeProvider
       .when('/', {

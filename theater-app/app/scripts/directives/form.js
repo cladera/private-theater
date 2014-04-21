@@ -38,6 +38,7 @@ angular.module('privateTheaterApp')
           var read = function (){
             var value = input.val();
             ngModel.$setViewValue(value);
+            ngModel.$render();
           };
           ngModel.$render = function(){
             input.val(ngModel.$viewValue || '');

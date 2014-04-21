@@ -14,6 +14,7 @@
     <!-- build:css styles/vendor.css -->
     <!-- bower:css -->
     <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/angular-notify/dist/angular-notify.css" />
     <!-- endbower -->
     <!-- endbuild -->
     <!-- videojs:css -->
@@ -22,6 +23,7 @@
     <!-- build:css({.tmp,app}) styles/main.css -->
     <link rel="stylesheet" href="styles/main.css">
     <link rel="stylesheet" href="styles/animations.css">
+    <link rel="stylesheet" href="styles/notifications.css">
     <!-- endbuild -->
   </head>
   <body ng-app="privateTheaterApp">
@@ -62,6 +64,7 @@
     <script src="bower_components/angular-animate/angular-animate.js"></script>
     <script src="bower_components/angular-gravatar/build/md5.js"></script>
     <script src="bower_components/angular-gravatar/build/angular-gravatar.js"></script>
+    <script src="bower_components/angular-notify/dist/angular-notify.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <script src="http://vjs.zencdn.net/4.4/video.js"></script>
@@ -93,6 +96,7 @@
     <script src="scripts/directives/admin-dashboard-nav.js"></script>
     <script src="scripts/directives/media.js"></script>
     <script src="scripts/directives/movie.js"></script>
+    <script src="scripts/services/notifications.js"></script>
     <!-- endbuild -->
 </body>
 </html>
